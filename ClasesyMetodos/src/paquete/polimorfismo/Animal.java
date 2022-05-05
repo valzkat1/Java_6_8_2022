@@ -1,6 +1,6 @@
 package paquete.polimorfismo;
 
-public class Animal {
+public /* final */ class Animal {
 
 	
 	private String Color;
@@ -55,6 +55,14 @@ public class Animal {
 	}
 	
 	
+	
+	
+	public /*final*/ void MetodoSobreEscribir() {
+		
+		System.out.println("Este es el metodo original..***");
+		
+		
+	}
 	
 	
 	

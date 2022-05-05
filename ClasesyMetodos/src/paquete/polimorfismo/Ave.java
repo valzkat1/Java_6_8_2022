@@ -11,4 +11,12 @@ public class Ave extends Animal{
 	}
 	
 	
+	
+	@Override
+	public void MetodoSobreEscribir() {
+		
+		System.out.println("Metodo para las aves *****");
+		
+	}
+	
 }

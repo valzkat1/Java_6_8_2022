@@ -17,7 +17,12 @@ public class Mamifero extends Animal{
 	}
 
 	
-	
+	@Override
+	public void MetodoSobreEscribir() {
+		
+		System.out.println("Este es el metodo para los mamiferos****");
+		
+	}
 	
 	
 	

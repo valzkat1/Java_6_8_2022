@@ -45,6 +45,14 @@ public class App {
 		}
 		
 			
+		objAnimal.MetodoSobreEscribir();
+		ArregloAnimal[2].MetodoSobreEscribir();
+		ArregloAnimal[3].MetodoSobreEscribir();
+		
+		
+		
+		
+		
 		
 	}
 
