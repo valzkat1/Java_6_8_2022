@@ -13,6 +13,7 @@ public class Ave extends Animal{
 	
 	
 	@Override
+	// Es posible sobreescribir el nivel de acceso siempre y cuando no se reduzca
 	public void MetodoSobreEscribir() {
 		
 		System.out.println("Metodo para las aves *****");

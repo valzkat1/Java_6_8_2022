@@ -49,6 +49,24 @@ public class App {
 		ArregloAnimal[2].MetodoSobreEscribir();
 		ArregloAnimal[3].MetodoSobreEscribir();
 		
+		/*
+		Integer.parseInt("")
+		Float.parseFloat("")
+		Double.parseDouble("")
+		Long.parseLong("")
+		*/
+		
+		float cantidad=10;
+		int canti2;
+		
+		canti2=(int) cantidad;
+		
+		
+		
+		double can=20;
+		long entero;
+		
+		entero=(long)can;
 		
 		
 		
