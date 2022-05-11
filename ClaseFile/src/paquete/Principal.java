@@ -14,7 +14,7 @@ public class Principal {
 		System.out.println("Trabajando con archivos**");
 		
 		try {
-			FileWriter objArchivo=new FileWriter("logs.txt");
+			FileWriter objArchivo=new FileWriter("logs.txt",true);
 			
 			objArchivo.write("Cualquier informacion que desee escribir en el archivo**\n");
 			
