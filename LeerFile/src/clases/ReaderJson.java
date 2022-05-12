@@ -20,6 +20,7 @@ public class ReaderJson {
 			
 			while(linea!=null) {
 				sb.append(linea);
+				sb.append("\n");
 				linea=lector.readLine();
 			}
 			
