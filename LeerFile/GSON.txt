@@ -1,6 +1,10 @@
 {
 "nombre":"Andres",
-"edad":30
+"edad":30,
+"listadoEstudiantes":[
+{"grupo":2,"edad":10,"sexo":"M","calificacion":3.5} ,
+{"grupo":3,"edad":11,"sexo":"F","calificacion":4.5}
 
+]
 
 }
