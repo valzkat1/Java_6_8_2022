@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -57,7 +58,7 @@ public class ControladorUno {
 	}
 	
 	
-	@PostMapping("/logear2")
+	@RequestMapping("/logear2")
 	public String formulario2(HttpServletRequest objetoRequest,Model mod) {
 		
 		
@@ -66,9 +67,9 @@ public class ControladorUno {
 
 		objetoRequest.toString();
 		
-		nombre=objetoRequest.getAttribute("nombre").toString();
+		nombre=objetoRequest.getParameter("nombre").toString();
 		
-		clave=objetoRequest.getParameter("clave");
+		clave=objetoRequest.getParameter("claves");
 		
 		
 		if(nombre.equals("victor")   && clave.equals("12345")) {
