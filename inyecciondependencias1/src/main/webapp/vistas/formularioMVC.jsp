@@ -21,17 +21,19 @@ Nombre: <f:input type="text"  path="nombre" name="nombre"/>
 Edad: <f:input type="text" path="edad" name="edad" />
 
 </p>
+
+<p>
 Apellidos: <f:input type="text" path="apellidos" name="apellidos"/>
 
 </p>
 Direccion: <f:input type="text" path="direccion" name="direccion"/>
 
-</p>
+<p>
 Telefono: <f:input type="text" path="telefono" name="telefono"/>
 
 </p>
 
-</p>
+<p>
 Genero: <f:select path="genero">
 <f:option value="">-- Seleccione --</f:option>
 <f:option value="M">Masculino</f:option>
@@ -46,9 +48,8 @@ Activo: <f:checkbox path="activo" value="true"/>
 
 </p>
 <p>
-Mayor de edad: <f:radiobutton path="mayorEdad"/>
-<br/>
-Menor de edad: <f:radiobutton path="mayorEdad"/>
+Mayor de edad: <f:radiobutton path="mayorEdad" value="true"/>
+
 </p>
 
 
