@@ -18,6 +18,9 @@
       </c:forEach>
 
 <p>
+<input type="hidden" value="${estudiante}" name="estudiante"/>
+</p>
+<p>
 <button type="submit">Calcular</button>
 </p>
 

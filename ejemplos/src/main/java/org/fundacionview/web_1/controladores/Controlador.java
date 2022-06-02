@@ -49,4 +49,39 @@ public class Controlador {
 	
 	
 	
+	
+	@PostMapping("/calculo2")
+	public String envioFormPromedios2(Model mod,@RequestParam("notas")Double notas[],@RequestParam("estudiante")String estu) {
+		
+		Double suma=0d;
+		for(int i=0;i < notas.length;i++) {
+			
+			suma=suma+notas[i];
+		}
+		Double prome=suma/notas.length;
+		
+		mod.addAttribute("estudiante",estu);
+		mod.addAttribute("promedio",prome);
+		return "index";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
