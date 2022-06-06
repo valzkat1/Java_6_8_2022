@@ -1,13 +1,19 @@
 package org.fundacionview.xmlbeans.modelos;
 
-import org.springframework.stereotype.Component;
 
-@Component("usuario")
-public class Usuario {
 
-	
+public class Empleado {
+
 	private String nombre;
 	private String apellidos;
+	private String cargo;
+	
+	
+	
+	
+	public Empleado() {
+		super();
+	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -20,13 +26,17 @@ public class Usuario {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	
-	
-	public Usuario() {
-		super();
+	public String getCargo() {
+		return cargo;
+	}
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 	
 	
 	
+	public String getActividades() {
+		return "Atiende Clientes, Oficios varios";
+	}
 	
 }
