@@ -1,13 +1,16 @@
 package org.fundacionview.xmlbeans.modelos;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component("usuario")
+@Scope("prototype")
 public class Usuario {
 
 	
 	private String nombre;
 	private String apellidos;
+	
 	public String getNombre() {
 		return nombre;
 	}

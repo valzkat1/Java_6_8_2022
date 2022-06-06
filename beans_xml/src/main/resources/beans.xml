@@ -8,7 +8,7 @@
 
     	<!--<context:component-scan base-package="org.fundacionview.xmlbeans.modelos" />
     	 <bean class="org.fundacionview.xmlbeans.modelos.Usuario" name="usuario"/>      --> 
-    	<bean class="org.fundacionview.xmlbeans.modelos.Empleado" name="Empleado">
+    	<bean class="org.fundacionview.xmlbeans.modelos.Empleado" name="Empleado"  scope="prototype">
     		
     	</bean>
     	
