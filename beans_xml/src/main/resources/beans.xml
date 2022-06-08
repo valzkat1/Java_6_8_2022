@@ -6,7 +6,7 @@
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     	
 
-    	<!--<context:component-scan base-package="org.fundacionview.xmlbeans.modelos" />
+    	<!-- <context:component-scan base-package="org.fundacionview.xmlbeans.modelos" />
     	 <bean class="org.fundacionview.xmlbeans.modelos.Usuario" name="usuario"/>      --> 
     	<bean class="org.fundacionview.xmlbeans.modelos.Empleado" name="Empleado"  scope="prototype">
     		
