@@ -20,12 +20,21 @@
  
  Nombre: <form:input type="text" name="nombre" path="nombre" class="form-control"/>
  <form:errors path="nombre"></form:errors>
+ <br/>
+ 
+  Edad: <form:input type="text" name="edad" path="edad" class="form-control"/>
+ <form:errors path="edad"></form:errors>
+ <br/>
+ 
  Telefono: <form:input path="telefono" name="telefono" class="form-control"/>
  <form:errors path="telefono"></form:errors>
- 
+ <br/>
  Email: <form:input path="email" name="email" class="form-control"/>
  <form:errors path="email"></form:errors>
  
+ <br/>
+ Confirmar Email: <form:input path="confirmaremail" name="confirmaremail" class="form-control"/>
+ <form:errors path="confirmaremail"></form:errors>
  <hr/>
  
  <input type="submit" value="Enviar" class="btn btn-primary" />
