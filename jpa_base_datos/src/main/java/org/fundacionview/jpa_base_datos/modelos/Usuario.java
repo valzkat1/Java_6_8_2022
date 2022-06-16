@@ -20,9 +20,19 @@ public class Usuario {
 	private String email;
 	
 	private String clave;
+	@Min(value = 18)
+	
+	private int edad;
 	
 	
-	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Usuario() {
 		super();
 	}
@@ -59,8 +69,7 @@ public class Usuario {
 		this.edad = edad;
 	}
 
-	@Min(value = 18)
-	private int edad;
+
 	
 	
 	
