@@ -31,8 +31,8 @@
 <td><c:out value="${us.getNombre()}"></c:out>  </td>
 <td><c:out value="${us.getEmail()}"></c:out></td>
 <td><c:out value="${us.getEdad()}"></c:out>  </td>
-<td> <input type="button" value="Editar" class="btn btn-secondary"/> </td>
-<td> <input type="button" value="Eliminar" class="btn btn-danger"/> </td>
+<td><a href="/editarU?id=${us.getId()}"> <input type="button" value="Editar" class="btn btn-secondary"/></a> </td>
+<td> <a href="/eliminarU?id=${us.getId()}"><input type="button" value="Eliminar" class="btn btn-danger"/></a> </td>
 
 </tr>
 </c:forEach>

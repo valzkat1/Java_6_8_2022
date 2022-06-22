@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ControladorUsuarios {
@@ -36,6 +37,8 @@ public class ControladorUsuarios {
 	}
 	
 	
+	//C R U D
+	
 	
 	@PostMapping("/formuluario")
 	public String crearUser(Model mod,@Valid @ModelAttribute("usuario")Usuario u,BindingResult resV) {
@@ -46,6 +49,8 @@ public class ControladorUsuarios {
 		
 			repoU.save(u);
 			
+			
+			
 		return "redirect:/listar";
 		
 		}
@@ -55,8 +60,24 @@ public class ControladorUsuarios {
 	@GetMapping("/listar")
 	public String listarUser(Model mod) {
 		
-		mod.addAttribute("listaUsuarios",repoU.findAll());
+		mod.addAttribute("listaUsuarios",repoU.getMayores());
 		return "resultado";
+	}
+	
+	
+	@GetMapping("/editarU")
+	public String editarUsuario(Model mod,@RequestParam("id")int id) {
+		
+		mod.addAttribute("usuario",repoU.getById(id));
+		return "editar";
+	}
+	
+	@GetMapping("/eliminarU")
+	public String eliminarUsuario(Model mod,@RequestParam("id")int id) {
+		
+		repoU.deleteById(id);
+		
+		return "redirect:/listar";
 	}
 	
 	
