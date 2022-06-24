@@ -16,10 +16,14 @@ public class Usuario {
 	@Size(max = 100,min = 3)
 	private String nombre;
 	
-	@Email
+	@Email(groups = {validacionLogin.class,validacionUser.class})
 	private String email;
 	
+	
+	@Size(min = 6,message = "Minimo 6 caracteres",groups = {validacionLogin.class})
 	private String clave;
+	
+	
 	@Min(value = 18)
 	
 	private int edad;
@@ -67,6 +71,14 @@ public class Usuario {
 
 	public void setEdad(int edad) {
 		this.edad = edad;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", email=" + email + ", clave=" + clave + ", edad=" + edad
+				+ ", getId()=" + getId() + ", getNombre()=" + getNombre() + ", getEmail()=" + getEmail()
+				+ ", getClave()=" + getClave() + ", getEdad()=" + getEdad() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 

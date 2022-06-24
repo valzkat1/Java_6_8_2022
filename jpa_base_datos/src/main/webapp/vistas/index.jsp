@@ -2,19 +2,9 @@
     pageEncoding="ISO-8859-1"%>
    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>    
     
-    
-    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <jsp:include page="cabecera.jsp" />  
+ 
 
-</head>
-<body>
-
-<div class="container">
 
 <h2>Crear Usuario</h2>
 
@@ -22,20 +12,26 @@
 
 <label>Nombre:</label>
 <form:input path="nombre" type="text"  class="form-control"/>
+<form:errors path="nombre"></form:errors>
+
 
 <label>Email:</label>
 <form:input path="email" type="text"  class="form-control"/>
+<form:errors path="email"></form:errors>
 
 
 <label>Edad:</label>
 <form:input path="edad" type="text"  class="form-control"/>
+<form:errors path="edad"></form:errors>
 
 <label>Clave:</label>
 <form:input path="clave" type="text"  class="form-control"/>
+<form:errors path="clave"></form:errors>
 
 
 <label>Identificacion:</label>
 <form:input path="id" type="number"  class="form-control"/>
+<form:errors path="id"></form:errors>
 
 <hr/>
 <button value="Guardar" class="btn btn-primary">Guardar</button>
@@ -47,8 +43,4 @@
 </div>
 
 
-
-
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-</body>
-</html>
+ <jsp:include page="pie.jsp" />
