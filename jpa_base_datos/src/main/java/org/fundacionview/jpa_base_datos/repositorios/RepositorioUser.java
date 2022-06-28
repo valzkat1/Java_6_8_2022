@@ -51,5 +51,12 @@ public interface RepositorioUser extends JpaRepository<Usuario, Integer>{
 	public Double getPromedioEdad();
 	 
 	
+	
+	@Query(value="SELECT *FROM tbl_usuario limit 1",nativeQuery=true)
+	public Usuario consultaNativa(); 
+	
+	
+	
+	
 
 }

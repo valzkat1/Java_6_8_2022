@@ -43,6 +43,10 @@ public class ControladorUsuarios {
 	//	System.out.println("****  *****");
 	//	System.out.println(usuarioEntre.toString());
 		
+		Usuario uN=repoU.consultaNativa();
+		System.out.println("**** Consulta Nativa  *****");
+		System.out.println(uN.toString());
+		
 		
 		System.out.println("****  *****");
 		System.out.println("El promedio de edad es: "+repoU.getPromedioEdad());
@@ -76,6 +80,8 @@ public class ControladorUsuarios {
 		
 		}
 	}
+	
+	
 	
 	
 	@GetMapping("/listar")
