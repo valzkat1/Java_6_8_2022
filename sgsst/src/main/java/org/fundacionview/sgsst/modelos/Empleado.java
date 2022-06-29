@@ -6,12 +6,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name = "tbl_empleado")
 public class Empleado {
 
 	public enum AreasEmpresa{
@@ -33,10 +35,78 @@ public class Empleado {
 	@NotEmpty(message = "Campo necesario",groups = {CamposGeneral.class})
 	private String apellidos;
 	
-	@NotEmpty(message = "Campo necesario" ,groups = {CamposGeneral.class,CamposLogin.class})
-	@Email(groups = {CamposGeneral.class,CamposLogin.class})
+	//@NotEmpty(message = "Campo necesario" ,groups = {CamposGeneral.class,CamposLogin.class})
+	//@Email(groups = {CamposGeneral.class,CamposLogin.class})
 	private String email;
 	
+	private String tipoID;
+	
+
+	
+	private int salario;
+	
+	private String cargo;
+	
+	private String eps;
+	
+	private String afp;
+	
+	private String arl;
+	
+	
+	
+	
+	
+	public String getTipoID() {
+		return tipoID;
+	}
+
+	public void setTipoID(String tipoID) {
+		this.tipoID = tipoID;
+	}
+
+
+
+	public int getSalario() {
+		return salario;
+	}
+
+	public void setSalario(int salario) {
+		this.salario = salario;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+
+	public String getEps() {
+		return eps;
+	}
+
+	public void setEps(String eps) {
+		this.eps = eps;
+	}
+
+	public String getAfp() {
+		return afp;
+	}
+
+	public void setAfp(String afp) {
+		this.afp = afp;
+	}
+
+	public String getArl() {
+		return arl;
+	}
+
+	public void setArl(String arl) {
+		this.arl = arl;
+	}
+
 	@NotEmpty(message = "Campo necesario",groups = {CamposGeneral.class,CamposLogin.class})
 	@Size(min = 6,message = "Minimo 6 caracteres",groups = {CamposLogin.class})
 	private String clave;
