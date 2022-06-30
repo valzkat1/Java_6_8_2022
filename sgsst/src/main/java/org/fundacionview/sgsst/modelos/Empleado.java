@@ -1,5 +1,7 @@
 package org.fundacionview.sgsst.modelos;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -42,7 +44,7 @@ public class Empleado {
 	private String tipoID;
 	
 
-	
+	@Min(value = 1000000,message = "SMV no es inferior a 1 millon",groups = {CamposGeneral.class})
 	private int salario;
 	
 	private String cargo;
@@ -53,10 +55,29 @@ public class Empleado {
 	
 	private String arl;
 	
+	private AreasEmpresa areaEmpleado;
+	
+	
+	private Date fechaNacimiento;
 	
 	
 	
-	
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public AreasEmpresa getAreaEmpleado() {
+		return areaEmpleado;
+	}
+
+	public void setAreaEmpleado(AreasEmpresa areaEmpleado) {
+		this.areaEmpleado = areaEmpleado;
+	}
+
 	public String getTipoID() {
 		return tipoID;
 	}

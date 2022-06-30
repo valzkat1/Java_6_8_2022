@@ -15,15 +15,15 @@
     <label class="form-label" >Nombre</label>
  <form:input type="text"  class="form-control form-control-lg" path="nombre"
               placeholder="Nombre" />         
-            <form:errors path="nombre"></form:errors>
- 
+            <form:errors path="nombre" class="errores"></form:errors>
+ <br/>
  
      <label class="form-label" >Apellidos</label>
- <form:input type="text"  class="form-control form-control-lg" path="nombre"
+ <form:input type="text"  class="form-control form-control-lg" path="apellidos"
               placeholder="Nombre" />         
-            <form:errors path="nombre"></form:errors>
+            <form:errors path="apellidos" class="errores"></form:errors>
  
- 
+ <br/>
 
  
   <label class="form-label" >Tipo ID</label>
@@ -31,27 +31,57 @@
    <form:options  itemLabel="nombre" items="${listaTipoID}" itemValue="valor" />
  
  </form:select>
- 
+
+ <br/>
  
       <label class="form-label" >ID</label>
  <form:input type="text"  class="form-control form-control-lg" path="id_user"
               placeholder="Identificacion de Usuario(CC)" />         
-            <form:errors path="id_user"></form:errors>
+            <form:errors path="id_user" class="errores"></form:errors>
  
- 
+ <br/>
     <label class="form-label" >Salario</label>
  <form:input type="text"  class="form-control form-control-lg" path="salario"
               />         
-            <form:errors path="salario"></form:errors>
+            <form:errors path="salario" class="errores"></form:errors>
             
-            
+    <br/>        
             
        <label class="form-label" >Cargo</label>
  <form:input type="text"  class="form-control form-control-lg" path="cargo"
               placeholder="Cargo" />         
-            <form:errors path="cargo"></form:errors>        
+            <form:errors path="cargo" class="errores"></form:errors>        
+ 
+ <br/>
  
  
+        <label class="form-label" >Clave</label>
+ <form:input type="text"  class="form-control form-control-lg" path="clave"
+              placeholder="clave" />         
+            <form:errors path="clave" class="errores"></form:errors>        
+ 
+ <br/>
+ 
+ 
+    <!--     <label class="form-label" >Area de Trabajo</label>
+ <form:select path="areaEmpleado" class="form-select">
+  <form:option value="">Seleccionar</form:option>
+ <form:option value="1">ADMINISTRACION</form:option>
+ <form:option value="2">SISTEMAS</form:option>
+ <form:option value="3">OFICIOS</form:option>
+ <form:option value="4">BRIGADA</form:option>
+ </form:select>         
+            <form:errors path="areaEmpleado"></form:errors>    
+  -->
+ 
+       <label class="form-label" >Fecha Nacimiento</label>
+ <form:input type="date"  class="form-control form-control-lg" path="fechaNacimiento"
+               />         
+            <form:errors path="fechaNacimiento" class="errores"></form:errors>        
+ 
+ 
+ 
+ <br/>
  
  <form:button type="submit" class="btn btn-primary">Enviar</form:button>
  
