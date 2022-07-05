@@ -4,12 +4,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.naming.Binding;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.fundacionview.sgsst.modelos.CamposGeneral;
 import org.fundacionview.sgsst.modelos.CamposLogin;
 import org.fundacionview.sgsst.modelos.Empleado;
+import org.fundacionview.sgsst.modelos.Usuario;
 import org.fundacionview.sgsst.modelos.tipoID;
+import org.fundacionview.sgsst.repositorios.RepoUser;
 import org.fundacionview.sgsst.repositorios.RepoUsuarios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -30,10 +34,12 @@ public class ControladorPpal {
 	@Autowired
 	RepoUsuarios repoU;
 	
+	@Autowired
+	RepoUser usuarioLogin;
 	
 	@GetMapping("/")
 	public String index(Model mod) {
-		mod.addAttribute("usuario",new Empleado());
+		mod.addAttribute("usuario",new Usuario());
 		
 		//System.out.println("*****  -- "+repoU.consultaNativa());
 		
@@ -80,12 +86,19 @@ public class ControladorPpal {
 	
 	
 	@PostMapping("/login")
-	public String login(Model mod,@Validated(CamposLogin.class) @ModelAttribute("usuario")Empleado u,BindingResult rv,HttpSession sess) {
+	public String login(Model mod,@Validated(CamposLogin.class) @ModelAttribute("usuario")Usuario u,BindingResult rv,HttpSession sess) {
 	
 		if(rv.hasErrors()) {
 			return "index";
 		}else {
-			return "redirect:/home";
+			
+			 if(usuarioLogin.loginUser(u.getUsername(),u.getClave())!=null) {
+				 return "redirect:/home";
+			 }else {
+				 return "redirect:/";
+			 }
+			
+			
 		}
 		
 	}
@@ -101,9 +114,8 @@ public class ControladorPpal {
 	@InitBinder
 	public void bindeFechas(WebDataBinder binde ) {
 		
-	   SimpleDateFormat miformato=new SimpleDateFormat("yyyy-MM-dd");
-		
-		
+	  SimpleDateFormat miformato=new SimpleDateFormat("yyyy-MM-dd");
+				
 	   binde.registerCustomEditor(Date.class, new CustomDateEditor(miformato, false));
 		
 	}
@@ -124,6 +136,29 @@ public class ControladorPpal {
 		
 		return "form_empleado";
 	}
+	
+	@GetMapping("/crear_user")
+	public String CrearUser(Model mod, @RequestParam("id")int id) {
+		
+		Usuario u=new Usuario();
+		u.setId_empleado(id);
+		mod.addAttribute("usuario",u);
+		return "form_empleado_user";
+	}
+	
+	@PostMapping("/form_usuario")
+	public String crearUs(@Valid @ModelAttribute("usuario")Usuario u,Model mod,BindingResult rv) {
+		
+		if(rv.hasErrors()) {
+			return "form_empleado_user";
+		}else {
+		
+			usuarioLogin.save(u);	
+			
+		return "redirect:/listarEmpleado";
+		}
+	}
+	
 	
 	
 	

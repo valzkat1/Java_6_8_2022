@@ -55,24 +55,24 @@
  <br/>
  
  
-        <label class="form-label" >Clave</label>
+<%--         <label class="form-label" >Clave</label>
  <form:input type="text"  class="form-control form-control-lg" path="clave"
               placeholder="clave" />         
-            <form:errors path="clave" class="errores"></form:errors>        
+            <form:errors path="clave" class="errores"></form:errors> --%>        
  
  <br/>
  
  
-    <!--     <label class="form-label" >Area de Trabajo</label>
+         <label class="form-label" >Area de Trabajo</label>
  <form:select path="areaEmpleado" class="form-select">
   <form:option value="">Seleccionar</form:option>
- <form:option value="1">ADMINISTRACION</form:option>
- <form:option value="2">SISTEMAS</form:option>
- <form:option value="3">OFICIOS</form:option>
- <form:option value="4">BRIGADA</form:option>
+ <form:option value="ADMINISTRACION">ADMINISTRACION</form:option>
+ <form:option value="SISTEMAS">SISTEMAS</form:option>
+ <form:option value="OFICIOS">OFICIOS</form:option>
+ <form:option value="BRIGADA">BRIGADA DE EMERGENCIA</form:option>
  </form:select>         
             <form:errors path="areaEmpleado"></form:errors>    
-  -->
+ <!-- -->
  
        <label class="form-label" >Fecha Nacimiento</label>
  <form:input type="date"  class="form-control form-control-lg" path="fechaNacimiento"

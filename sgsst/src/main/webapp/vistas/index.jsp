@@ -46,20 +46,20 @@ height: 100%;
 
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <form:input type="email" id="form3Example3" class="form-control form-control-lg" path="email"
+            <form:input type="text" id="form3Example3" class="form-control form-control-lg" path="username"
               placeholder="Enter a valid email address" />
             <label class="form-label" for="form3Example3">Email</label>
-            <form:errors path="email"></form:errors>
+            <form:errors path="username"></form:errors>
           </div>
 
           <!-- Password input -->
-          <div class="form-outline mb-3">
+        <div class="form-outline mb-3">
             <form:input type="password" id="form3Example4" class="form-control form-control-lg"  path="clave"
               placeholder="Ingrese password" />
             <label class="form-label" for="form3Example4">Clave</label>
             <form:errors path="clave"></form:errors>
          
-          </div>
+          </div>   <%--  --%>
 <div class="text-center text-lg-start mt-4 pt-2">
             <button type="submit" class="btn btn-primary btn-lg"
               style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>

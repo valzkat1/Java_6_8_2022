@@ -128,9 +128,9 @@ public class Empleado {
 		this.arl = arl;
 	}
 
-	@NotEmpty(message = "Campo necesario",groups = {CamposGeneral.class,CamposLogin.class})
-	@Size(min = 6,message = "Minimo 6 caracteres",groups = {CamposLogin.class})
-	private String clave;
+//	@NotEmpty(message = "Campo necesario",groups = {CamposGeneral.class,CamposLogin.class})
+//	@Size(min = 6,message = "Minimo 6 caracteres",groups = {CamposLogin.class})
+//	private String clave;
 	
 	private String genero;	
 	
@@ -195,14 +195,11 @@ public class Empleado {
 		this.email = email;
 	}
 
-	public String getClave() {
-		return clave;
-	}
-
-	public void setClave(String clave) {
-		this.clave = clave;
-	}
-
+	/*
+	 * public String getClave() { return clave; }
+	 * 
+	 * public void setClave(String clave) { this.clave = clave; }
+	 */
 	public String getGenero() {
 		return genero;
 	}
