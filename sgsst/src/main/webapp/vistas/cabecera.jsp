@@ -29,7 +29,7 @@ font-size:70%;
 <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
 
 <li class="nav-item"><a href="/listarEmpleado" class="nav-link">Empleados</a></li>
-<li class="nav-item"><a href="#" class="nav-link">Usuarios</a></li>
+<li class="nav-item"><a href="/listarUser" class="nav-link">Usuarios</a></li>
 <li class="nav-item"><a href="#" class="nav-link">Ausentismos</a></li>
 <li class="nav-item"><a href="#" class="nav-link">Reportes</a></li>
 </ul>

@@ -140,10 +140,23 @@ public class ControladorPpal {
 	@GetMapping("/crear_user")
 	public String CrearUser(Model mod, @RequestParam("id")int id) {
 		
-		Usuario u=new Usuario();
-		u.setId_empleado(id);
-		mod.addAttribute("usuario",u);
-		return "form_empleado_user";
+		Usuario uCompo=usuarioLogin.ComprobarCrearUser(id);
+		
+		if(uCompo!=null) {
+		
+			mod.addAttribute("usuario",uCompo);
+			mod.addAttribute("editando",true);
+			mod.addAttribute("titulo","Editar Usuario del Empleado: "+id);
+			return "form_empleado_user";
+		}else {
+		
+		  Usuario u=new Usuario();
+		  u.setId_empleado(id);
+		  mod.addAttribute("usuario",u);
+			mod.addAttribute("editando",false);
+		  mod.addAttribute("titulo","Crear Usuario del Empleado: "+id);
+		  return "form_empleado_user";
+		}
 	}
 	
 	@PostMapping("/form_usuario")
@@ -159,6 +172,33 @@ public class ControladorPpal {
 		}
 	}
 	
+	@GetMapping("/listarUser")
+	public String listarUser(Model mod) {
+		
+		mod.addAttribute("listaEmpleados",usuarioLogin.findAll());
+		
+		return "listarUser";
+	}
+	
+	
+	
+	@GetMapping("/editar_user")
+	public String editarUser(Model mod,@RequestParam("id")int id) {
+		
+		mod.addAttribute("usuario",usuarioLogin.getById(id));
+		mod.addAttribute("editando",true);
+		mod.addAttribute("titulo","Editar Usuario del Empleado: "+id);
+		return "form_empleado_user";
+	}
+	
+	
+	@GetMapping("/eliminar_user")
+	public String eliminarUser(Model mod,@RequestParam("id")int id) {
+		
+		usuarioLogin.deleteById(id);
+	
+		return "redirect:/listarUser";
+	}
 	
 	
 	

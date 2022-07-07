@@ -8,7 +8,7 @@
 
 <div class="container">
  
- <h3>Crear Usuario</h3>
+ <h3>${titulo }</h3>
  <form:form modelAttribute="usuario" method="POST" action="/form_usuario">
  
  
@@ -27,7 +27,10 @@
 
 
 <form:hidden path="id_empleado" value=""/>
-
+  <c:if test = "${editando}">
+        
+<form:hidden path="id" value=""/>
+      </c:if>
 
  
  <form:button type="submit" class="btn btn-primary">Enviar</form:button>

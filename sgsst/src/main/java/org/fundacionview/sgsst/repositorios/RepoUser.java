@@ -11,4 +11,9 @@ public interface RepoUser extends JpaRepository<Usuario, Integer>{
 	@Query("FROM Usuario where username=:username and clave=:clave")
 	public Usuario loginUser(@Param("username")String username,@Param("clave")String clave);
 	
+	
+	@Query(value="SELECT *FROM Usuario where id_empleado=:id_empleado limit 1",nativeQuery =true)
+	public Usuario ComprobarCrearUser(@Param("id_empleado")int id_empleado);
+	
+	
 }

@@ -10,12 +10,13 @@
 	</parent>
 	<groupId>org.fundacionview</groupId>
 	<artifactId>sgsst</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1</version>
 	<packaging>war</packaging>
 	<name>sgsst</name>
 	<description>Proyecto Productivo Fundacion View</description>
 	<properties>
-		<java.version>11</java.version>
+	
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -71,6 +72,9 @@
 		    <artifactId>mysql-connector-java</artifactId>
 		    <scope>runtime</scope>
 		</dependency>
+		
+		
+
 		
 	</dependencies>
 
