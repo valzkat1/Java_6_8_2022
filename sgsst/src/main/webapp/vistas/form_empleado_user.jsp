@@ -26,7 +26,7 @@
  <br/>
 
 
-<form:hidden path="id_empleado" value=""/>
+<form:hidden path="unoAuno" value=""/>
   <c:if test = "${editando}">
         
 <form:hidden path="id" value=""/>

@@ -151,7 +151,8 @@ public class ControladorPpal {
 		}else {
 		
 		  Usuario u=new Usuario();
-		  u.setId_empleado(id);
+		  u.setUnoAuno(repoU.getById(id));
+		  //u.setId_empleado(id);
 		  mod.addAttribute("usuario",u);
 			mod.addAttribute("editando",false);
 		  mod.addAttribute("titulo","Crear Usuario del Empleado: "+id);
