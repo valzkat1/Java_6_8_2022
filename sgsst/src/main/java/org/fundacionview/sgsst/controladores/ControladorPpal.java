@@ -8,6 +8,7 @@ import javax.naming.Binding;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.fundacionview.sgsst.modelos.Ausentismo;
 import org.fundacionview.sgsst.modelos.CamposGeneral;
 import org.fundacionview.sgsst.modelos.CamposLogin;
 import org.fundacionview.sgsst.modelos.Empleado;
@@ -199,6 +200,13 @@ public class ControladorPpal {
 		usuarioLogin.deleteById(id);
 	
 		return "redirect:/listarUser";
+	}
+	
+	@GetMapping("/form_incapacidad")
+	public String formAusentismo(Model mod) {
+		
+		mod.addAttribute("ausentismo",new Ausentismo());
+		return "form_ausentismos";
 	}
 	
 	

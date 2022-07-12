@@ -2,9 +2,15 @@ package org.fundacionview.sgsst.modelos;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "tbl_ausentismos")
@@ -33,6 +39,8 @@ public class Ausentismo {
 	private String clasificacion;
 
 	//CIE10
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_diagnostic",referencedColumnName = "id")
 	private CIE10 diagnostico;
 
 	public int getId() {

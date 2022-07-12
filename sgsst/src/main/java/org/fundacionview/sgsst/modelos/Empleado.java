@@ -18,6 +18,15 @@ import javax.validation.constraints.Size;
 @Table(name = "tbl_empleado")
 public class Empleado {
 
+	@Override
+	public String toString() {
+		return "Empleado [id=" + id + ", id_user=" + id_user + ", nombre=" + nombre + ", apellidos=" + apellidos
+				+ ", email=" + email + ", tipoID=" + tipoID + ", salario=" + salario + ", cargo=" + cargo + ", eps="
+				+ eps + ", afp=" + afp + ", arl=" + arl + ", areaEmpleado=" + areaEmpleado + ", fechaNacimiento="
+				+ fechaNacimiento + ", genero=" + genero + ", direccion=" + direccion + ", telefono=" + telefono
+				+ ", areas=" + areas + "]";
+	}
+
 	public enum AreasEmpresa{
 		ADMINISTRACION, SISTEMAS, OFICIOS, BRIGADA
 	}
