@@ -1,5 +1,6 @@
 package org.fundacionview.sgsst.modelos;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,12 @@ public class CIE10 {
 	@Size(max = 50)
 	private String codigo;
 	
+	@Override
+	public String toString() {
+		return "CIE10 [id=" + id + ", codigo=" + codigo + ", diagnostico=" + diagnostico + ", grupo_dx=" + grupo_dx
+				+ ", seg_osteomuscular=" + seg_osteomuscular + ", origen=" + origen + "]";
+	}
+
 	@Size(max = 250)
 	private String diagnostico;
 	
