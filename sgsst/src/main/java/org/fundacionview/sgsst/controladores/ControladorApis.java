@@ -24,22 +24,24 @@ public class ControladorApis {
 	@Autowired
 	RepoUsuarios repoEmple;
 	
+	@GetMapping("/empleados")
+	public ArrayList<Empleado> getLista(@RequestParam("text")String texto) {
+		
+		
+	    ArrayList<Empleado> listaDiag=	repoEmple.listarEmpleadByName(texto.toLowerCase());
+		
+		return listaDiag;
+	}
+	
 	@GetMapping("/diagnosticos")
-	public String getLista(@RequestParam("text")String texto) {
+	public ArrayList<CIE10> getListaDiagnosticos(@RequestParam("text")String texto) {
 		
 		
-	ArrayList<Empleado> listaDiag=	repoEmple.listarEmpleadByName(texto);
-	
-	for(Empleado d:listaDiag) {
+	    ArrayList<CIE10> listaDiag=	repoDiagnost.autocompleteDiagnosticos(texto.toLowerCase());
+
 		
-	 System.out.println(d.toString());
-	 
+		return listaDiag;
 	}
-		
-		return "";
-	}
-	
-	
 	
 	
 	

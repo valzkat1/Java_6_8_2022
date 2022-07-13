@@ -16,7 +16,7 @@ public interface RepoUsuarios extends JpaRepository<Empleado, Integer>{
 	public Empleado consultaNativa();
 	
 	
-	@Query(value = "FROM Empleado WHERE nombre LIKE %:texto%")
+	@Query(value = "FROM Empleado WHERE LOWER(nombre) LIKE %:texto%")
 	public ArrayList<Empleado> listarEmpleadByName(@Param("texto")String texto);
 	
 	

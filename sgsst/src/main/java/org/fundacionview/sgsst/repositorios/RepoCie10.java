@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface RepoCie10 extends JpaRepository<CIE10, Integer>{
 
 	
-	@Query("FROM CIE10 where codigo LIKE %:codig%  OR diagnostico LIKE %:codig% ")
+	@Query("FROM CIE10 where LOWER(codigo) LIKE %:codig%  OR LOWER(diagnostico) LIKE %:codig% ")
 	public ArrayList<CIE10> autocompleteDiagnosticos(@Param("codig")String codig);
 	
 	
