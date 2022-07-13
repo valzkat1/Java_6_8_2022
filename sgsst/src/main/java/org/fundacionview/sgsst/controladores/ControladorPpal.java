@@ -14,6 +14,7 @@ import org.fundacionview.sgsst.modelos.CamposLogin;
 import org.fundacionview.sgsst.modelos.Empleado;
 import org.fundacionview.sgsst.modelos.Usuario;
 import org.fundacionview.sgsst.modelos.tipoID;
+import org.fundacionview.sgsst.repositorios.RepoAusentismos;
 import org.fundacionview.sgsst.repositorios.RepoUser;
 import org.fundacionview.sgsst.repositorios.RepoUsuarios;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +34,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ControladorPpal {
 
 	@Autowired
-	RepoUsuarios repoU;
+	RepoUsuarios repoEmpleado;
 	
 	@Autowired
 	RepoUser usuarioLogin;
+	
+	@Autowired
+	RepoAusentismos repoA;
 	
 	@GetMapping("/")
 	public String index(Model mod) {
@@ -79,7 +83,7 @@ public class ControladorPpal {
 			return "form_empleado";
 		}else
 		{
-			repoU.save(e);
+			repoEmpleado.save(e);
 			
 		return "redirect:/home";
 		}
@@ -125,7 +129,7 @@ public class ControladorPpal {
 	@GetMapping("/listarEmpleado")
 	public String listarEmpl(Model mod) {
 		
-		mod.addAttribute("listaEmpleados",repoU.findAll());
+		mod.addAttribute("listaEmpleados",repoEmpleado.findAll());
 		
 		return "listarEmpleados";
 	}
@@ -133,7 +137,7 @@ public class ControladorPpal {
 	@GetMapping("/editar_empleado")
 	public String editarEmplea(Model mod,@RequestParam("id")int id) {
 		
-		mod.addAttribute("empleado",repoU.getById(id));
+		mod.addAttribute("empleado",repoEmpleado.getById(id));
 		
 		return "form_empleado";
 	}
@@ -152,7 +156,7 @@ public class ControladorPpal {
 		}else {
 		
 		  Usuario u=new Usuario();
-		  u.setUnoAuno(repoU.getById(id));
+		  u.setUnoAuno(repoEmpleado.getById(id));
 		  //u.setId_empleado(id);
 		  mod.addAttribute("usuario",u);
 			mod.addAttribute("editando",false);
@@ -207,6 +211,26 @@ public class ControladorPpal {
 		
 		mod.addAttribute("ausentismo",new Ausentismo());
 		return "form_ausentismos";
+	}
+	
+	
+	
+	@PostMapping("/form_incapacidad")
+	public String procesaFormularioIncapacidad(Model mod, @Valid @ModelAttribute("ausentismo")Ausentismo a,BindingResult rv) {
+		
+		if(rv.hasErrors()) {
+			
+			return "form_ausentismos";
+		}else
+		{
+			
+			Empleado e=repoEmpleado.consultarByID(Long.parseLong(a.getNumDoc()));
+			
+			a.setTipoDoc(e.getTipoID());
+			repoA.save(a);
+			
+		return "redirect:/home";
+		}
 	}
 	
 	

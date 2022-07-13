@@ -19,5 +19,8 @@ public interface RepoUsuarios extends JpaRepository<Empleado, Integer>{
 	@Query(value = "FROM Empleado WHERE LOWER(nombre) LIKE %:texto%")
 	public ArrayList<Empleado> listarEmpleadByName(@Param("texto")String texto);
 	
+	@Query("FROM Empleado WHERE id_user=:cc")
+	public Empleado consultarByID(@Param("cc")long cc);
+	
 	
 }

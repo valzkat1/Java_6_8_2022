@@ -15,13 +15,14 @@
  
   <div class="mb-3 autocompleteBS">
           <label for="inputText1" class="form-label">Buscar Empleado</label>
-          <input type="text" class="form-control" id="nombreEmpleado">
+          <form:input type="text" class="form-control" id="nombreEmpleado" path="nombre" />
+          <form:errors path="nombre"></form:errors>
         </div>
        
     
           <div class="mb-3">
             <label for="inputID1" class="form-label">ID Usuario</label>
-            <input type="text" class="form-control" id="dataEmpleado" disabled>
+            <form:input type="text" class="form-control" id="dataEmpleado"  disabled="true" path="numDoc" />
           </div>
  
 
@@ -36,9 +37,82 @@
             <input type="text" class="form-control" id="dataDiagnosti" disabled>
           </div>     
 
+  <div class="mb-3">
+            <label for="dataDiagnosti" class="form-label">Tipo Incapacidad</label>
+           <form:select path="tipoIncapacidad" class="form-select">
+             <form:option value="">- Seleccionar -</form:option>
+             <form:option value="Enfermedad Comun">Enfermedad Comun</form:option>
+             <form:option value="Licencia Maternidad/Paternidad">Licencia Maternidad/Paternidad</form:option>
+              <form:option value="Accidente de trabajo">Accidente de trabajo</form:option>
+              <form:option value="Enfermedad laboral">Enfermedad Laboral</form:option>
+              <form:option value="Fondo Pensiones">Fondo Pensiones</form:option>
+              <form:option value="Accidente de transito">Accidente de transito</form:option>
+           </form:select>
+           <form:errors path="tipoIncapacidad"></form:errors>
+          </div> 
+
+ <div class="mb-3">
+            <label for="dataDiagnosti" class="form-label">Cargo</label>
+            <form:input type="text" class="form-control" id="cargo" path="cargo" />
+            <form:errors path="cargo"></form:errors>
+          </div> 
+          
+      <div class="mb-3">
+            <label for="dataDiagnosti" class="form-label">EPS</label>
+            <form:input type="text" class="form-control" id="eps" path="EPS"  />
+            <form:errors path="EPS"></form:errors>
+          </div> 
+          
+          
+   <div class="mb-3">
+            <label for="dataDiagnosti" class="form-label">Salario</label>
+            <form:input type="text" class="form-control" id="salario"  path="salario" onblur="calcularSalario()"/>
+            <form:errors path="salario"></form:errors>
+          </div>              
+
  
-
-
+ 
+  <div class="mb-3">
+            <label for="dataDiagnosti" class="form-label">Salario x Dia</label>
+            <form:input type="text" class="form-control" id="salarioDia"  path="salarioDia"  disabled="true"/>
+            <form:errors path="salarioDia"></form:errors>
+          </div> 
+ 
+ 
+ 
+   <div class="mb-3">
+            <label for="dataDiagnosti" class="form-label">Fecha Inicio</label>
+            <form:input type="date" class="form-control" id="fechaInicio"  path="fechaInicio" />
+            <form:errors path="fechaInicio"></form:errors>
+          </div> 
+          
+     <div class="mb-3">
+            <label for="dataDiagnosti" class="form-label">Fecha Fin</label>
+            <form:input type="date" class="form-control" id="fechaFin"  path="fechaFin" onchange="calcularDias()" onblur="calcularDias()"/>
+            <form:errors path="fechaFin"></form:errors>
+          </div> 
+          
+          
+      <div class="mb-3">
+            <label for="dataDiagnosti" class="form-label">Total Dias</label>
+            <form:input type="text" class="form-control" id="totalDias"  path="totalDias" disabled="true"/>
+            <form:errors path="totalDias"></form:errors>
+          </div> 
+          
+          
+          
+       <div class="mb-3">
+            <label for="dataDiagnosti" class="form-label">Clasificación</label>
+            <form:select path="clasificacion" class="form-select">
+               <form:option value="">- Seleccionar -</form:option>
+           		<form:option value="Inicial">Inicial</form:option>
+            <form:option value="Prorroga">Prorroga</form:option>
+            
+            </form:select>
+        
+            <form:errors path="clasificacion"></form:errors>
+          </div>                   
+          
  
  <form:button type="submit" class="btn btn-primary">Enviar</form:button>
  
@@ -56,6 +130,42 @@
 
 
 <script>
+function calcularDias(){
+	
+	console.log("Llamando calculo dias..");
+	
+	var fechaIni= document.getElementById("fechaInicio").value;
+	var fechaFin= document.getElementById("fechaFin").value;
+	
+	console.log("fechas: "+fechaIni+"   "+fechaFin);
+	
+	var fecha1= Date.parse(fechaIni);
+	var fecha2= Date.parse(fechaFin);
+	
+	console.log("fechas Milisegundos: "+fecha1+"   "+fecha2);
+	
+	
+	
+	
+	var diferencia=fecha2-fecha1;
+	
+	console.log("Diferencia: "+diferencia);
+	
+	//var totalDias=(diferencia/1000)/60/60/24;
+	var totalDias=(diferencia/(3600*1000*24));
+	
+	document.getElementById("totalDias").value=totalDias;
+	
+}
+
+
+function calcularSalario(){
+	var totalDia= (document.getElementById("salario").value)/30;
+	
+	document.getElementById("salarioDia").value=totalDia;
+}
+
+
 const autoCompleteConfig = [{
     name: 'Empleados',
     debounceMS: 250,

@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.ManyToAny;
 
@@ -24,18 +26,31 @@ public class Ausentismo {
 		super();
 	}
 
+	// Info Empleado
+	@NotEmpty
+	@NotBlank
 	private String nombre;
 	private String apellidos;
 	private String tipoDoc;
 	private String numDoc;
-	private String tipoIncapacidad;
+	
+	@NotEmpty(message = "Campo necesario")
 	private String cargo;
+	@NotEmpty(message = "Campo necesario")
 	private String EPS;
+	
 	private int salario;
 	private double salarioDia;
+	
+	// Info Incapacidad
+	@NotEmpty(message = "Campo necesario")
+	private String tipoIncapacidad;	
+	@NotEmpty(message = "Campo necesario")
 	private Date fechaInicio;
+	@NotEmpty(message = "Campo necesario")
 	private Date fechaFin;
 	private int totalDias;
+	@NotEmpty(message = "Campo necesario")
 	private String clasificacion;
 
 	//CIE10
