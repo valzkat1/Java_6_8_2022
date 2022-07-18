@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -19,6 +21,7 @@ import org.hibernate.annotations.ManyToAny;
 public class Ausentismo {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	
@@ -32,7 +35,7 @@ public class Ausentismo {
 	private String nombre;
 	private String apellidos;
 	private String tipoDoc;
-	private String numDoc;
+	private Long numDoc;
 	
 	@NotEmpty(message = "Campo necesario")
 	private String cargo;
@@ -45,9 +48,9 @@ public class Ausentismo {
 	// Info Incapacidad
 	@NotEmpty(message = "Campo necesario")
 	private String tipoIncapacidad;	
-	@NotEmpty(message = "Campo necesario")
+//	@NotEmpty(message = "Campo necesario")
 	private Date fechaInicio;
-	@NotEmpty(message = "Campo necesario")
+	//@NotEmpty(message = "Campo necesario")
 	private Date fechaFin;
 	private int totalDias;
 	@NotEmpty(message = "Campo necesario")
@@ -90,11 +93,11 @@ public class Ausentismo {
 		this.tipoDoc = tipoDoc;
 	}
 
-	public String getNumDoc() {
+	public Long getNumDoc() {
 		return numDoc;
 	}
 
-	public void setNumDoc(String numDoc) {
+	public void setNumDoc(Long numDoc) {
 		this.numDoc = numDoc;
 	}
 

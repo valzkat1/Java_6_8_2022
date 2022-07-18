@@ -16,4 +16,7 @@ public interface RepoCie10 extends JpaRepository<CIE10, Integer>{
 	public ArrayList<CIE10> autocompleteDiagnosticos(@Param("codig")String codig);
 	
 	
+	@Query("FROM CIE10 WHERE LOWER(codigo)=:codi")
+	public CIE10 getDiagnosti(@Param("codi")String codi);
+	
 }

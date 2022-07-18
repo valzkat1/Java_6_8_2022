@@ -12423,3 +12423,5 @@ INSERT INTO diagnosticos_cie10 (id, codigo, diagnostico, grupo_dx, seg_osteomusc
 INSERT INTO diagnosticos_cie10 (id, codigo, diagnostico, grupo_dx, seg_osteomuscular, origen) VALUES (12423, 'Z998', 'DEPENDENCIA DE OTRAS MAQUINAS Y DISPOSITIVOS CAPACITANTES', 'FACTORES QUE INFLUYEN EN EL ESTADO DE SALUD Y CONTACTO CON LOS SERVICIOS DE SALUD', 'N.A', 'E.G');
 INSERT INTO diagnosticos_cie10 (id, codigo, diagnostico, grupo_dx, seg_osteomuscular, origen) VALUES (12424, 'Z999', 'DEPENDENCIA DE MAQUINA Y DISPOSITIVO CAPACITANTE, NO ESPECIFICADA', 'FACTORES QUE INFLUYEN EN EL ESTADO DE SALUD Y CONTACTO CON LOS SERVICIOS DE SALUD', 'N.A', 'E.G');
 
+
+

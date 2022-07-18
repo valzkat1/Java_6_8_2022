@@ -22,19 +22,19 @@
     
           <div class="mb-3">
             <label for="inputID1" class="form-label">ID Usuario</label>
-            <form:input type="text" class="form-control" id="dataEmpleado"  disabled="true" path="numDoc" />
+            <form:input type="text" class="form-control" id="dataEmpleado"  path="numDoc" />
           </div>
  
 
   <div class="mb-3 autocompleteBS">
           <label for="nombreDiagnosti" class="form-label">Buscar Diagnostico</label>
-          <input type="text" class="form-control" id="nombreDiagnosti">
+          <input type="text" class="form-control" id="nombreDiagnosti" name="nombreDiagnosti" >
         </div>
        
     
           <div class="mb-3">
             <label for="dataDiagnosti" class="form-label">Codigo CIE10</label>
-            <input type="text" class="form-control" id="dataDiagnosti" disabled>
+            <input type="text" class="form-control" id="dataDiagnosti" name="dataDiagnosti" >
           </div>     
 
   <div class="mb-3">
@@ -74,7 +74,7 @@
  
   <div class="mb-3">
             <label for="dataDiagnosti" class="form-label">Salario x Dia</label>
-            <form:input type="text" class="form-control" id="salarioDia"  path="salarioDia"  disabled="true"/>
+            <form:input type="hidden" class="form-control" id="salarioDia"  path="salarioDia"  />
             <form:errors path="salarioDia"></form:errors>
           </div> 
  
@@ -95,7 +95,7 @@
           
       <div class="mb-3">
             <label for="dataDiagnosti" class="form-label">Total Dias</label>
-            <form:input type="text" class="form-control" id="totalDias"  path="totalDias" disabled="true"/>
+            <form:input type="hidden" class="form-control" id="totalDias"  path="totalDias" />
             <form:errors path="totalDias"></form:errors>
           </div> 
           

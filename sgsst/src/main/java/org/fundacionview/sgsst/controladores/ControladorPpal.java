@@ -15,6 +15,7 @@ import org.fundacionview.sgsst.modelos.Empleado;
 import org.fundacionview.sgsst.modelos.Usuario;
 import org.fundacionview.sgsst.modelos.tipoID;
 import org.fundacionview.sgsst.repositorios.RepoAusentismos;
+import org.fundacionview.sgsst.repositorios.RepoCie10;
 import org.fundacionview.sgsst.repositorios.RepoUser;
 import org.fundacionview.sgsst.repositorios.RepoUsuarios;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,9 @@ public class ControladorPpal {
 	
 	@Autowired
 	RepoAusentismos repoA;
+	
+	@Autowired
+	RepoCie10 cie10;
 	
 	@GetMapping("/")
 	public String index(Model mod) {
@@ -216,7 +220,7 @@ public class ControladorPpal {
 	
 	
 	@PostMapping("/form_incapacidad")
-	public String procesaFormularioIncapacidad(Model mod, @Valid @ModelAttribute("ausentismo")Ausentismo a,BindingResult rv) {
+	public String procesaFormularioIncapacidad(Model mod, @Valid @ModelAttribute("ausentismo")Ausentismo a,BindingResult rv,@RequestParam("dataDiagnosti")String codigDiagn) {
 		
 		if(rv.hasErrors()) {
 			
@@ -224,9 +228,11 @@ public class ControladorPpal {
 		}else
 		{
 			
-			Empleado e=repoEmpleado.consultarByID(Long.parseLong(a.getNumDoc()));
+			Empleado e=repoEmpleado.consultarByID((a.getNumDoc()));
 			
 			a.setTipoDoc(e.getTipoID());
+			a.setDiagnostico(cie10.getDiagnosti(codigDiagn));
+			
 			repoA.save(a);
 			
 		return "redirect:/home";
