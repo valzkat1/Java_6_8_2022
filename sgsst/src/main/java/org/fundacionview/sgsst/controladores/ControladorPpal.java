@@ -220,7 +220,7 @@ public class ControladorPpal {
 	
 	
 	@PostMapping("/form_incapacidad")
-	public String procesaFormularioIncapacidad(Model mod, @Valid @ModelAttribute("ausentismo")Ausentismo a,BindingResult rv,@RequestParam("dataDiagnosti")String codigDiagn) {
+	public String procesaFormularioIncapacidad(Model mod, @Valid @ModelAttribute("ausentismo")Ausentismo a,BindingResult rv,@RequestParam("dataDiagnosti")String dataDiagnosti) {
 		
 		if(rv.hasErrors()) {
 			
@@ -231,12 +231,110 @@ public class ControladorPpal {
 			Empleado e=repoEmpleado.consultarByID((a.getNumDoc()));
 			
 			a.setTipoDoc(e.getTipoID());
-			a.setDiagnostico(cie10.getDiagnosti(codigDiagn));
+			a.setApellidos(e.getApellidos());
 			
+			a.setAreaTrabajo(e.getAreaEmpleado());
+			a.setDiagnostico(cie10.getDiagnosti(dataDiagnosti.toLowerCase()));
+			
+			double valorInca=a.getTotalDias()*a.getSalarioDia();
+			a.setValorIncapacidad(valorInca);
+			
+			double calculos[]=calculoEntidadPagadora(a.getTipoIncapacidad(), a.getTotalDias(), a.getSalarioDia());
+			a.setTotalEPS(calculos[1]);
+			a.setTotalARL(calculos[3]);
+			a.setTotalPensiones(calculos[2]);
+			a.setAsumidoEmpresa(calculos[0]);
 			repoA.save(a);
 			
 		return "redirect:/home";
 		}
+	}
+	
+	
+	
+	public double[] calculoEntidadPagadora(String tipoIncapa,int totalDias,double salarioDia) {
+		
+		double totalPagar[]=new double[4];  //0=Empleador, 1=EPS, 2=Fondo Pension,3= ARL
+		if(tipoIncapa.equals("Enfermedad Comun")) {
+			if(totalDias<3) {
+				totalPagar[0]=totalDias*salarioDia;
+				totalPagar[1]=0.0;
+				totalPagar[2]=0.0;
+				totalPagar[3]=0.0;
+			}else if(totalDias<=180) {
+				totalPagar[0]=(2*salarioDia);
+				totalPagar[1]=((totalDias-2)*salarioDia)*0.6667;
+				totalPagar[2]=0.0;
+				totalPagar[3]=0.0;
+			}else if(totalDias<=540){
+				totalPagar[0]=(2*salarioDia);
+				totalPagar[1]=((178)*salarioDia)*0.6667;
+				totalPagar[2]=(totalDias-180)*salarioDia*0.5;
+				totalPagar[3]=0.0;
+				
+			}else {
+				totalPagar[0]=(2*salarioDia);
+				totalPagar[1]=((178)*salarioDia)*0.6667;
+				totalPagar[2]=(totalDias-180)*salarioDia*0.5;
+				totalPagar[3]=0.0;
+			}
+			
+		}else if(tipoIncapa.equals("Licencia Maternidad")) {
+			
+			totalPagar[0]=0.0;
+			totalPagar[1]=totalDias*salarioDia;
+			totalPagar[2]=0.0;
+			totalPagar[3]=0.0;
+			
+			
+		}else if(tipoIncapa.equals("Licencia Paternidad")) {
+			
+			totalPagar[0]=0.0;
+			totalPagar[1]=totalDias*salarioDia;
+			totalPagar[2]=0.0;
+			totalPagar[3]=0.0;
+			
+			
+		}else if(tipoIncapa.equals("Accidente de Trabajo") || tipoIncapa.equals("Enfermedad Laboral")) {
+			totalPagar[0]=0.0;
+			totalPagar[1]=0.0;
+			totalPagar[2]=0.0;
+			totalPagar[3]=totalDias*salarioDia;
+			
+			
+		}else if(tipoIncapa.equals("Fondo de Pensiones")) {
+			
+			
+			
+		}else if(tipoIncapa.equals("Accidente de transito")) {
+			
+			if(totalDias<3) {
+				totalPagar[0]=totalDias*salarioDia;
+				totalPagar[1]=0.0;
+				totalPagar[2]=0.0;
+				totalPagar[3]=0.0;
+			}else {
+				totalPagar[0]=2*salarioDia;
+				totalPagar[1]=0.0;
+				totalPagar[2]=0.0;
+				totalPagar[3]=(totalDias-2)*salarioDia*0.67;
+			}
+			
+		}
+		
+		
+		return totalPagar;
+	}
+	
+	
+	
+	
+	@GetMapping("/listarIncapacidad")
+	public String listarIncapacidad(Model mod) {
+		
+		mod.addAttribute("listaIncapacidades",repoA.findAll());
+		
+		return "listarIncapacidad";
 	}
 	
 	

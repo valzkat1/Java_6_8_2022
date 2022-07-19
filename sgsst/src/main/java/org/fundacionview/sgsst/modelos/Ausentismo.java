@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
+import org.fundacionview.sgsst.modelos.Empleado.AreasEmpresa;
 import org.hibernate.annotations.ManyToAny;
 
 @Entity
@@ -55,6 +56,66 @@ public class Ausentismo {
 	private int totalDias;
 	@NotEmpty(message = "Campo necesario")
 	private String clasificacion;
+
+	
+	private double valorIncapacidad;
+	private double asumidoEmpresa;
+	private double totalEPS;
+	private double totalARL;
+	private double totalPensiones;
+	
+	private AreasEmpresa areaTrabajo;
+	
+	
+	public AreasEmpresa getAreaTrabajo() {
+		return areaTrabajo;
+	}
+
+	public void setAreaTrabajo(AreasEmpresa areaTrabajo) {
+		this.areaTrabajo = areaTrabajo;
+	}
+
+	public double getValorIncapacidad() {
+		return valorIncapacidad;
+	}
+
+	public void setValorIncapacidad(double valorIncapacidad) {
+		this.valorIncapacidad = valorIncapacidad;
+	}
+
+	public double getAsumidoEmpresa() {
+		return asumidoEmpresa;
+	}
+
+	public void setAsumidoEmpresa(double asumidoEmpresa) {
+		this.asumidoEmpresa = asumidoEmpresa;
+	}
+
+
+
+	public double getTotalEPS() {
+		return totalEPS;
+	}
+
+	public void setTotalEPS(double totalEPS) {
+		this.totalEPS = totalEPS;
+	}
+
+	public double getTotalARL() {
+		return totalARL;
+	}
+
+	public void setTotalARL(double totalARL) {
+		this.totalARL = totalARL;
+	}
+
+	public double getTotalPensiones() {
+		return totalPensiones;
+	}
+
+	public void setTotalPensiones(double totalPensiones) {
+		this.totalPensiones = totalPensiones;
+	}
 
 	//CIE10
 	@ManyToOne(cascade = CascadeType.ALL)

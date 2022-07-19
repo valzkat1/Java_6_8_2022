@@ -12,6 +12,9 @@
  <h3>Registrar Incapacidad</h3>
  <form:form modelAttribute="ausentismo" method="POST" action="/form_incapacidad">
  
+ <div class="row">
+ 
+ <div class="col">
  
   <div class="mb-3 autocompleteBS">
           <label for="inputText1" class="form-label">Buscar Empleado</label>
@@ -42,7 +45,8 @@
            <form:select path="tipoIncapacidad" class="form-select">
              <form:option value="">- Seleccionar -</form:option>
              <form:option value="Enfermedad Comun">Enfermedad Comun</form:option>
-             <form:option value="Licencia Maternidad/Paternidad">Licencia Maternidad/Paternidad</form:option>
+             <form:option value="Licencia Maternidad">Licencia Maternidad</form:option>
+             <form:option value="Licencia Paternidad">Licencia Paternidad</form:option>
               <form:option value="Accidente de trabajo">Accidente de trabajo</form:option>
               <form:option value="Enfermedad laboral">Enfermedad Laboral</form:option>
               <form:option value="Fondo Pensiones">Fondo Pensiones</form:option>
@@ -62,7 +66,10 @@
             <form:input type="text" class="form-control" id="eps" path="EPS"  />
             <form:errors path="EPS"></form:errors>
           </div> 
-          
+    
+    </div>
+    
+     <div class="col">     
           
    <div class="mb-3">
             <label for="dataDiagnosti" class="form-label">Salario</label>
@@ -74,7 +81,7 @@
  
   <div class="mb-3">
             <label for="dataDiagnosti" class="form-label">Salario x Dia</label>
-            <form:input type="hidden" class="form-control" id="salarioDia"  path="salarioDia"  />
+            <form:input type="text" class="form-control" id="salarioDia"  path="salarioDia"  />
             <form:errors path="salarioDia"></form:errors>
           </div> 
  
@@ -95,7 +102,7 @@
           
       <div class="mb-3">
             <label for="dataDiagnosti" class="form-label">Total Dias</label>
-            <form:input type="hidden" class="form-control" id="totalDias"  path="totalDias" />
+            <form:input type="text" class="form-control" id="totalDias"  path="totalDias" />
             <form:errors path="totalDias"></form:errors>
           </div> 
           
@@ -116,6 +123,9 @@
  
  <form:button type="submit" class="btn btn-primary">Enviar</form:button>
  
+ 
+ </div>
+ </div>
  
  </form:form>
 
