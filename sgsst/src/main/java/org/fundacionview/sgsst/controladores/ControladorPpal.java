@@ -17,7 +17,7 @@ import org.fundacionview.sgsst.modelos.tipoID;
 import org.fundacionview.sgsst.repositorios.RepoAusentismos;
 import org.fundacionview.sgsst.repositorios.RepoCie10;
 import org.fundacionview.sgsst.repositorios.RepoUser;
-import org.fundacionview.sgsst.repositorios.RepoUsuarios;
+import org.fundacionview.sgsst.repositorios.RepoEmpleados;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ControladorPpal {
 
 	@Autowired
-	RepoUsuarios repoEmpleado;
+	RepoEmpleados repoEmpleado;
 	
 	@Autowired
 	RepoUser usuarioLogin;

@@ -9,8 +9,13 @@
 <div class="container">
  
  <h3>Crear Empleados</h3>
- <form:form modelAttribute="empleado" method="POST" action="/form_empleado">
  
+
+ 
+ <form:form modelAttribute="empleado" method="POST" action="/form_empleado">
+  <div class="row">
+ 
+ <div class="col">
  
     <label class="form-label" >Nombre</label>
  <form:input type="text"  class="form-control form-control-lg" path="nombre"
@@ -53,7 +58,9 @@
             <form:errors path="cargo" class="errores"></form:errors>        
  
  <br/>
+ </div>
  
+ <div class="col">
  
 <%--         <label class="form-label" >Clave</label>
  <form:input type="text"  class="form-control form-control-lg" path="clave"
@@ -83,9 +90,35 @@
  
  <br/>
  
+    <label class="form-label" >EPS</label>
+ <form:input type="text"  class="form-control form-control-lg" path="eps"
+              />         
+            <form:errors path="eps" class="errores"></form:errors>
+            
+    <br/> 
+    
+    
+       <label class="form-label" >AFP</label>
+ <form:input type="text"  class="form-control form-control-lg" path="afp"
+              />         
+            <form:errors path="afp" class="errores"></form:errors>
+            
+    <br/> 
+    
+    
+       <label class="form-label" >ARL</label>
+ <form:input type="text"  class="form-control form-control-lg" path="arl"
+              />         
+            <form:errors path="arl" class="errores"></form:errors>
+            
+    <br/> 
+ 
+ 
  <form:button type="submit" class="btn btn-primary">Enviar</form:button>
  
+ </div>
  
+ </div>
  </form:form>
 
 

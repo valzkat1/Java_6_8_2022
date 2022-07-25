@@ -2,6 +2,8 @@ package org.fundacionview.sgsst.modelos;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,6 +30,20 @@ public class Usuario {
 	private Empleado unoAuno;
 	
 	//private int id_empleado;
+
+	@Enumerated(EnumType.STRING)
+	private Roles roles;
+	
+	
+
+	public Roles getRoles() {
+		return roles;
+	}
+
+
+	public void setRoles(Roles roles) {
+		this.roles = roles;
+	}
 
 
 	public int getId() {

@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RepoUsuarios extends JpaRepository<Empleado, Integer>{
+public interface RepoEmpleados extends JpaRepository<Empleado, Integer>{
 
 	
 	@Query(value = "SELECT *FROM tbl_empleado limit 1",nativeQuery = true)

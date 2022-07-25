@@ -24,7 +24,7 @@ public class Empleado {
 				+ ", email=" + email + ", tipoID=" + tipoID + ", salario=" + salario + ", cargo=" + cargo + ", eps="
 				+ eps + ", afp=" + afp + ", arl=" + arl + ", areaEmpleado=" + areaEmpleado + ", fechaNacimiento="
 				+ fechaNacimiento + ", genero=" + genero + ", direccion=" + direccion + ", telefono=" + telefono
-				+ ", areas=" + areas + "]";
+				+ ", areas=]";
 	}
 
 	public enum AreasEmpresa{
@@ -147,18 +147,10 @@ public class Empleado {
 	
 	private String telefono;
 
-	@Enumerated(EnumType.ORDINAL)
-	private AreasEmpresa areas;
-	
-	
-	
-	public AreasEmpresa getAreas() {
-		return areas;
-	}
 
-	public void setAreas(AreasEmpresa areas) {
-		this.areas = areas;
-	}
+	
+	
+
 
 	public Empleado() {
 		super();

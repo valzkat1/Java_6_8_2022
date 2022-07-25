@@ -12423,5 +12423,22 @@ INSERT INTO diagnosticos_cie10 (id, codigo, diagnostico, grupo_dx, seg_osteomusc
 INSERT INTO diagnosticos_cie10 (id, codigo, diagnostico, grupo_dx, seg_osteomuscular, origen) VALUES (12423, 'Z998', 'DEPENDENCIA DE OTRAS MAQUINAS Y DISPOSITIVOS CAPACITANTES', 'FACTORES QUE INFLUYEN EN EL ESTADO DE SALUD Y CONTACTO CON LOS SERVICIOS DE SALUD', 'N.A', 'E.G');
 INSERT INTO diagnosticos_cie10 (id, codigo, diagnostico, grupo_dx, seg_osteomuscular, origen) VALUES (12424, 'Z999', 'DEPENDENCIA DE MAQUINA Y DISPOSITIVO CAPACITANTE, NO ESPECIFICADA', 'FACTORES QUE INFLUYEN EN EL ESTADO DE SALUD Y CONTACTO CON LOS SERVICIOS DE SALUD', 'N.A', 'E.G');
 
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES	('Admin', 'Home', true, true, true);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES	('Admin', 'Empleados', true, true, true);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES	('Admin', 'Usuarios', true, true, true);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES	('Admin', 'Ausentismos', true, true, true);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES	('Admin', 'Reportes', true, true, true);
 
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Home', true, true, true);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Empleados', true, true, true);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Usuarios', true, false, false);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Ausentismos', true, true, true);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Reportes', true, true, true);
 
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas', 'Home', true, false, false);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas', 'Empleados', true, false, false);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas', 'Usuarios', true, false, false);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas', 'Ausentismos', true, false, false);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas', 'Reportes', true, false, false);
+
+INSERT INTO "tbl_empleado" ("id", "afp", "apellidos", "area_empleado", "arl", "cargo", "direccion", "email", "eps", "fecha_nacimiento", "genero", "id_user", "nombre", "salario", "telefono", "tipoid") VALUES (1, 'cuaslquiera', 'ramirez', 0, 'cuaslquiera', 'Admin', NULL, NULL, 'SURA', '2022-7-1 00:00:00', NULL, 22222222, 'Pepito', 1000000, NULL, 'CC');

@@ -6,7 +6,7 @@ import java.util.Map;
 import org.fundacionview.sgsst.modelos.CIE10;
 import org.fundacionview.sgsst.modelos.Empleado;
 import org.fundacionview.sgsst.repositorios.RepoCie10;
-import org.fundacionview.sgsst.repositorios.RepoUsuarios;
+import org.fundacionview.sgsst.repositorios.RepoEmpleados;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,7 @@ public class ControladorApis {
 	RepoCie10 repoDiagnost;
 	
 	@Autowired
-	RepoUsuarios repoEmple;
+	RepoEmpleados repoEmple;
 	
 	@GetMapping("/empleados")
 	public ArrayList<Empleado> getLista(@RequestParam("text")String texto) {

@@ -40,24 +40,24 @@ height: 100%;
           class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form:form action="/login" modelAttribute="usuario" method="POST">
+        <form action="/login"  method="POST">
         
 
 
           <!-- Email input -->
           <div class="form-outline mb-4">
-            <form:input type="text" id="form3Example3" class="form-control form-control-lg" path="username"
+            <input type="text" id="form3Example3" class="form-control form-control-lg" name="username"
               placeholder="Enter a valid email address" />
             <label class="form-label" for="form3Example3">Email</label>
-            <form:errors path="username"></form:errors>
+<%--             <form:errors path="username"></form:errors> --%>
           </div>
 
           <!-- Password input -->
         <div class="form-outline mb-3">
-            <form:input type="password" id="form3Example4" class="form-control form-control-lg"  path="clave"
+            <input type="password" id="form3Example4" class="form-control form-control-lg"  name="password"
               placeholder="Ingrese password" />
             <label class="form-label" for="form3Example4">Clave</label>
-            <form:errors path="clave"></form:errors>
+<%--             <form:errors path="clave"></form:errors> --%>
          
           </div>   <%--  --%>
 <div class="text-center text-lg-start mt-4 pt-2">
@@ -65,21 +65,11 @@ height: 100%;
               style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
             
           </div>
-          
-          <div class="d-flex justify-content-between align-items-center">
-            <!-- Checkbox -->
-            <div class="form-check mb-0">
-              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-              <label class="form-check-label" for="form2Example3">
-                Recordar
-              </label>
-            </div>
-            <a href="#!" class="text-body">Recuperar Clave</a>
-          </div>
+       
 
         
 
-        </form:form>
+        </form>
       </div>
     </div>
   </div>

@@ -1,5 +1,7 @@
 package org.fundacionview.sgsst.repositorios;
 
+import java.util.Optional;
+
 import org.fundacionview.sgsst.modelos.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,6 +16,12 @@ public interface RepoUser extends JpaRepository<Usuario, Integer>{
 	
 	@Query(value="SELECT *FROM Usuario where id_empleado=:id_empleado limit 1",nativeQuery =true)
 	public Usuario ComprobarCrearUser(@Param("id_empleado")int id_empleado);
+	
+	
+	@Query(value = "FROM Usuario WHERE username=:usernam")
+	public Optional<Usuario> buscarPorUserName(@Param("usernam")String usernam);
+	
+	
 	
 	
 }
