@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.LoginUrlAuthenticationEnt
 @EnableWebSecurity
 public class Configuracion extends WebSecurityConfigurerAdapter{
 
-	private static final String[] paginasNoFiltradas= new String[] {"/","/login","/js/**","/css/**"};
+	private static final String[] paginasNoFiltradas= new String[] {"/","/login","/js/**","/css/**","sinPermisos"};
 	
 	
 	@Bean
@@ -45,17 +45,22 @@ public class Configuracion extends WebSecurityConfigurerAdapter{
 		.anyRequest().fullyAuthenticated()
 		.and()
 		.exceptionHandling().authenticationEntryPoint(createDelegateAuthEntryPoint())
+		.and().exceptionHandling()
 		.accessDeniedPage("/sinPermisos")
 		.and()
 		.formLogin()
 		.loginPage("/")
 		.loginProcessingUrl("/login")
+		.failureUrl("/login?error")
 		.defaultSuccessUrl("/home")
 		.permitAll()
 		.and()
 		.rememberMe()
 		.and()
-		.csrf();
+		.csrf()
+		.disable()
+		.sessionManagement()
+		.invalidSessionUrl("/login");
 	}
 	
 }

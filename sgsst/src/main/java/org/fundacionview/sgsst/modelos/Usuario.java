@@ -1,6 +1,7 @@
 package org.fundacionview.sgsst.modelos;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,10 +20,11 @@ public class Usuario {
 	private int id;
 	
 	@Size(min = 5)
+	@Column(unique = true)
 	private String username;
 	
 	@Size(min=6)
-	private String clave;	
+	private String password;	
 
 
 	@OneToOne(cascade = CascadeType.ALL)
@@ -76,13 +78,13 @@ public class Usuario {
 	}
 
 
-	public String getClave() {
-		return clave;
+	public String getPassword() {
+		return password;
 	}
 
 
-	public void setClave(String clave) {
-		this.clave = clave;
+	public void setPassword(String clave) {
+		this.password = clave;
 	}
 
 

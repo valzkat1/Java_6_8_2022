@@ -18,9 +18,11 @@ public interface RepoUser extends JpaRepository<Usuario, Integer>{
 	public Usuario ComprobarCrearUser(@Param("id_empleado")int id_empleado);
 	
 	
-	@Query(value = "FROM Usuario WHERE username=:usernam")
-	public Optional<Usuario> buscarPorUserName(@Param("usernam")String usernam);
+	//@Query(value = "FROM Usuario WHERE username=:usernam")
+	//public Optional<Usuario> buscarPorUserName(@Param("usernam")String usernam);
 	
+	
+	public Optional<Usuario> findByUsername(String username);
 	
 	
 	

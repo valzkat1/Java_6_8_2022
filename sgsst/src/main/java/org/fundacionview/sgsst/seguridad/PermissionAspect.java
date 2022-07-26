@@ -53,7 +53,8 @@ public class PermissionAspect {
            });
 
             if(!hasPermission[0]){
-                throw new AccessDeniedException("Do not has permission");
+            	return null;
+                //throw new AccessDeniedException("Do not has permission");
             }
 
         }

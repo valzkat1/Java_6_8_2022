@@ -27,7 +27,7 @@
 
 <tr>
 <td>${emp.getUsername()}</td>
-<td>${emp.getClave()}</td>
+<td>${emp.getPassword()}</td>
 
 <td><button type="button" onclick="confirmarEliminaUser(${emp.getId()})" class="btn btn-danger">Eliminar</button></td>
 <td><a href="/editar_user?id=${emp.getId()}"><button type="button" class="btn btn-success">Editar</button></a></td>

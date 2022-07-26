@@ -17,9 +17,12 @@ import org.fundacionview.sgsst.modelos.tipoID;
 import org.fundacionview.sgsst.repositorios.RepoAusentismos;
 import org.fundacionview.sgsst.repositorios.RepoCie10;
 import org.fundacionview.sgsst.repositorios.RepoUser;
+import org.fundacionview.sgsst.seguridad.PermissionCheck;
+import org.fundacionview.sgsst.seguridad.Workspace;
 import org.fundacionview.sgsst.repositorios.RepoEmpleados;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,9 +49,9 @@ public class ControladorPpal {
 	@Autowired
 	RepoCie10 cie10;
 	
-	@GetMapping("/")
+	@GetMapping({"/","/login"})	
 	public String index(Model mod) {
-		mod.addAttribute("usuario",new Usuario());
+		//mod.addAttribute("usuario",new Usuario());
 		
 		//System.out.println("*****  -- "+repoU.consultaNativa());
 		
@@ -57,6 +60,7 @@ public class ControladorPpal {
 	
 	
 	@GetMapping("/form_empleado")
+	@PermissionCheck(workspace = {Workspace.EMPLEADOS},write = true)
 	public String creaEmpleado(Model mod) {
 		mod.addAttribute("empleado",new Empleado());
 		
@@ -74,6 +78,7 @@ public class ControladorPpal {
 	
 	
 	@PostMapping("/form_empleado")
+	@PermissionCheck(workspace = {Workspace.EMPLEADOS},write = true)
 	public String procesaFormulario(Model mod, @Validated(CamposGeneral.class) @ModelAttribute("empleado")Empleado e,BindingResult rv) {
 		
 		if(rv.hasErrors()) {
@@ -94,14 +99,14 @@ public class ControladorPpal {
 	}
 	
 	
-	@PostMapping("/login")
+	//@PostMapping("/login")
 	public String login(Model mod,@Validated(CamposLogin.class) @ModelAttribute("usuario")Usuario u,BindingResult rv,HttpSession sess) {
 	
 		if(rv.hasErrors()) {
 			return "index";
 		}else {
 			
-			 if(usuarioLogin.loginUser(u.getUsername(),u.getClave())!=null) {
+			 if(usuarioLogin.loginUser(u.getUsername(),u.getPassword())!=null) {
 				 return "redirect:/home";
 			 }else {
 				 return "redirect:/";
@@ -115,6 +120,7 @@ public class ControladorPpal {
 	
 	
 	@GetMapping("/home")
+	@PermissionCheck(workspace = {Workspace.HOME},read = true)
 	public String home() {
 		return "home";
 	}
@@ -131,6 +137,7 @@ public class ControladorPpal {
 	
 	
 	@GetMapping("/listarEmpleado")
+	@PermissionCheck(workspace = {Workspace.EMPLEADOS},read = true)
 	public String listarEmpl(Model mod) {
 		
 		mod.addAttribute("listaEmpleados",repoEmpleado.findAll());
@@ -138,15 +145,25 @@ public class ControladorPpal {
 		return "listarEmpleados";
 	}
 	
+	
 	@GetMapping("/editar_empleado")
+	@PermissionCheck(workspace = {Workspace.EMPLEADOS},write  = true)
 	public String editarEmplea(Model mod,@RequestParam("id")int id) {
 		
+		
+		ArrayList<tipoID> listaTipos=new ArrayList<tipoID>();
+		listaTipos.add(new tipoID("-- Seleccionar",""));
+		listaTipos.add(new tipoID("Cedula Ciudadania","CC"));
+		listaTipos.add(new tipoID("Cedula Extranjero","CE"));
+		
+		mod.addAttribute("listaTipoID",listaTipos);
 		mod.addAttribute("empleado",repoEmpleado.getById(id));
 		
-		return "form_empleado";
+		return "editar_empleado";
 	}
 	
 	@GetMapping("/crear_user")
+	@PermissionCheck(workspace = {Workspace.USUARIOS},read = true)
 	public String CrearUser(Model mod, @RequestParam("id")int id) {
 		
 		Usuario uCompo=usuarioLogin.ComprobarCrearUser(id);
@@ -169,13 +186,64 @@ public class ControladorPpal {
 		}
 	}
 	
+	
+	
+	@GetMapping("/editar_user")
+	@PermissionCheck(workspace = {Workspace.USUARIOS},read = true)
+	public String editar_user(Model mod, @RequestParam("id")int id) {
+		
+		Usuario uCompo=usuarioLogin.ComprobarCrearUser(id);
+		
+		if(uCompo!=null) {
+		
+			mod.addAttribute("usuario",uCompo);
+			mod.addAttribute("editando",true);
+			mod.addAttribute("titulo","Editar Usuario del Empleado: "+id);
+			return "editar_user";
+		}else {
+		
+		  Usuario u=new Usuario();
+		  u.setUnoAuno(repoEmpleado.getById(id));
+		  //u.setId_empleado(id);
+		  mod.addAttribute("usuario",u);
+			mod.addAttribute("editando",false);
+		  mod.addAttribute("titulo","Crear Usuario del Empleado: "+id);
+		  return "editar_user";
+		}
+	}
+	
+	@Autowired
+	BCryptPasswordEncoder encode;
+	
+	
 	@PostMapping("/form_usuario")
+	@PermissionCheck(workspace = {Workspace.USUARIOS},write =  true)
 	public String crearUs(@Valid @ModelAttribute("usuario")Usuario u,Model mod,BindingResult rv) {
 		
 		if(rv.hasErrors()) {
 			return "form_empleado_user";
 		}else {
 		
+			
+			u.setPassword(encode.encode(u.getPassword()));
+			usuarioLogin.save(u);	
+			
+		return "redirect:/listarEmpleado";
+		}
+	}
+	
+	
+	
+	@PostMapping("/editar_user")
+	@PermissionCheck(workspace = {Workspace.USUARIOS},write =  true)
+	public String editar_user(@Valid @ModelAttribute("usuario")Usuario u,Model mod,BindingResult rv) {
+		
+		if(rv.hasErrors()) {
+			return "editar_user";
+		}else {
+		
+			
+			//u.setPassword(encode.encode(u.getPassword()));
 			usuarioLogin.save(u);	
 			
 		return "redirect:/listarEmpleado";
@@ -183,6 +251,7 @@ public class ControladorPpal {
 	}
 	
 	@GetMapping("/listarUser")
+	@PermissionCheck(workspace = {Workspace.USUARIOS},read = true)
 	public String listarUser(Model mod) {
 		
 		mod.addAttribute("listaEmpleados",usuarioLogin.findAll());
@@ -192,17 +261,11 @@ public class ControladorPpal {
 	
 	
 	
-	@GetMapping("/editar_user")
-	public String editarUser(Model mod,@RequestParam("id")int id) {
-		
-		mod.addAttribute("usuario",usuarioLogin.getById(id));
-		mod.addAttribute("editando",true);
-		mod.addAttribute("titulo","Editar Usuario del Empleado: "+id);
-		return "form_empleado_user";
-	}
+	
 	
 	
 	@GetMapping("/eliminar_user")
+	@PermissionCheck(workspace = {Workspace.USUARIOS},delete =  true)
 	public String eliminarUser(Model mod,@RequestParam("id")int id) {
 		
 		usuarioLogin.deleteById(id);
@@ -210,7 +273,19 @@ public class ControladorPpal {
 		return "redirect:/listarUser";
 	}
 	
+	
+	@GetMapping("/eliminar_empleado")
+	@PermissionCheck(workspace = {Workspace.USUARIOS},delete =  true)
+	public String eliminar_empleado(Model mod,@RequestParam("id")int id) {
+		
+		repoEmpleado.deleteById(id);
+	
+		return "redirect:/listarEmpleado";
+	}
+	
+	
 	@GetMapping("/form_incapacidad")
+	@PermissionCheck(workspace = {Workspace.AUSENTISMOS},write  = true)
 	public String formAusentismo(Model mod) {
 		
 		mod.addAttribute("ausentismo",new Ausentismo());
@@ -220,6 +295,7 @@ public class ControladorPpal {
 	
 	
 	@PostMapping("/form_incapacidad")
+	@PermissionCheck(workspace = {Workspace.AUSENTISMOS},write = true)
 	public String procesaFormularioIncapacidad(Model mod, @Valid @ModelAttribute("ausentismo")Ausentismo a,BindingResult rv,@RequestParam("dataDiagnosti")String dataDiagnosti) {
 		
 		if(rv.hasErrors()) {
@@ -330,6 +406,8 @@ public class ControladorPpal {
 	
 	
 	@GetMapping("/listarIncapacidad")
+	@PermissionCheck(workspace = {Workspace.AUSENTISMOS},read = true)
+
 	public String listarIncapacidad(Model mod) {
 		
 		mod.addAttribute("listaIncapacidades",repoA.findAll());
@@ -337,6 +415,10 @@ public class ControladorPpal {
 		return "listarIncapacidad";
 	}
 	
+	@GetMapping("/sinPermisos")
+	public String sinPermisos() {
+		return "sinPermisos";
+	}
 	
 	
 }

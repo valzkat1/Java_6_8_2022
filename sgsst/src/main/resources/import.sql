@@ -12442,3 +12442,4 @@ INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas
 INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas', 'Reportes', true, false, false);
 
 INSERT INTO "tbl_empleado" ("id", "afp", "apellidos", "area_empleado", "arl", "cargo", "direccion", "email", "eps", "fecha_nacimiento", "genero", "id_user", "nombre", "salario", "telefono", "tipoid") VALUES (1, 'cuaslquiera', 'ramirez', 0, 'cuaslquiera', 'Admin', NULL, NULL, 'SURA', '2022-7-1 00:00:00', NULL, 22222222, 'Pepito', 1000000, NULL, 'CC');
+INSERT INTO usuario(id,username,password,roles,id_empleado) VALUES (1,'admin','$2a$10$4KpRoCAm.WE4qAsPXua2PeoyQiDRGCiBxPjcrz5dbSNByV21wl7Zy','Admin',1);

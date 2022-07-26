@@ -14,12 +14,12 @@
 
 <thead>
 <th>Nombre</th>
-<th>Apellidos</th>
+
 <th>Cargo</th>
 <th>Fecha Inicial</th>
-<th>Fecha Final</th>
+
 <th>Total Dias</th>
-<th>Salario</th>
+
 <th>SalarioDia</th>
 <th>EPS</th>
 <th>Diagnostico</th>
@@ -27,9 +27,9 @@
 <th>$ Empresa</th>
 <th>$ EPS</th>
 <th>$ ARL</th>
-<th>Clasificacion</th>
+
 <th>Editar</th>
-<th>Eliminar</th>
+
 
 
 
@@ -39,13 +39,13 @@
 <c:forEach items="${listaIncapacidades}" var="emp" >
 
 <tr>
-<td>${emp.getNombre()}</td>
-<td>${emp.getApellidos()}</td>
+<td>${emp.getNombre()} ${emp.getApellidos()}</td>
+
 <td>${emp.getCargo()}</td>
 <td style="font-size:60%">${emp.getFechaInicio()}</td>
-<td style="font-size:60%">${emp.getFechaFin()}</td>
+
 <td>${emp.getTotalDias()}</td>
-<td>${emp.getSalario()}</td>
+
 <td style="font-size:70%">${emp.getSalarioDia()}</td>
 <td>${emp.getEPS()}</td>
 <td style="font-size:60%">${emp.getDiagnostico().getDiagnostico()}</td>

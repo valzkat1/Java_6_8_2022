@@ -18,11 +18,11 @@ public class SecurityUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		Optional<Usuario> optional= repoUse.buscarPorUserName(username);
+		Optional<Usuario> optional= repoUse.findByUsername(username);
 		
 		if(optional.isPresent()) {
 			Usuario user= optional.get();
-			return new SecurityUserDetails(user.getId(), user.getUsername(), user.getClave(), user.getRoles());
+			return new SecurityUserDetails(user.getId(), user.getUsername(), user.getPassword(), user.getRoles());
 		}
 		
 		return null;

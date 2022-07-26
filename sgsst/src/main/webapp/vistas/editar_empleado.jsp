@@ -12,7 +12,8 @@
  <h3>Crear Empleados</h3>
  
 
- <c:if test="${empleado != null }">
+ 
+ <c:if test="${empleado !=null}">
  <form:form modelAttribute="empleado" method="POST" action="/form_empleado">
   <div class="row">
  

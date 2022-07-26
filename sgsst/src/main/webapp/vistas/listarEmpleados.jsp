@@ -40,7 +40,7 @@
 <td>${emp.getId_user()}</td>
 <td><a href="/editar_empleado?id=${emp.getId()}"><button type="button" class="btn btn-primary">Editar</button></a></td>
 <td><a href="/eliminar_empleado?id=${emp.getId()}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
-<td><a href="/crear_user?id=${emp.getId()}"><button type="button" class="btn btn-success">Usuario</button></a></td>
+<td><a href="/editar_user?id=${emp.getId()}"><button type="button" class="btn btn-success">Usuario</button></a></td>
 
 
 </tr>

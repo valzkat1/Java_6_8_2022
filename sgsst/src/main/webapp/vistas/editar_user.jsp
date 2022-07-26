@@ -9,7 +9,7 @@
 <div class="container">
  
  <h3>${titulo }</h3>
- <form:form modelAttribute="usuario" method="POST" action="/form_usuario">
+ <form:form modelAttribute="usuario" method="POST" action="/editar_user">
  
  
     <label class="form-label" >Nombre Usuario</label>
@@ -18,12 +18,9 @@
             <form:errors path="username" class="errores"></form:errors>
  <br/>
  
-     <label class="form-label" >Clave</label>
- <form:input type="text"  class="form-control form-control-lg" path="password"
-              placeholder="password" />         
-            <form:errors path="password" class="errores"></form:errors>
+    
  
- <br/>
+
      <label class="form-label" >Roles</label>
  <form:select class="form-select" path="roles">
    <form:option value="Consultas">Consultas</form:option>
