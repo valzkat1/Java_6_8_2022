@@ -442,5 +442,23 @@ public class ControladorPpal {
 	}
 	
 	
+	@GetMapping("/reporteArea")
+	@PermissionCheck(workspace = {Workspace.REPORTES},read = true)
+	public String reporteArea() {
+		return "reporteArea";
+	}
+	
+	
+	@PostMapping("/reporteAreas")
+	@PermissionCheck(workspace = {Workspace.REPORTES},read = true)
+	public String generarReporteArea(Model mod,@RequestParam("area")String area) {
+		
+		mod.addAttribute("listaIncapacidades",repoA.findAll());
+		mod.addAttribute("area",area);
+		return "tableReporteArea";
+	}
+	
+	
+	
 	
 }

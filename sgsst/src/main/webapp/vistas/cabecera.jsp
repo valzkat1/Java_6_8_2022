@@ -31,7 +31,15 @@ font-size:70%;
 <li class="nav-item"><a href="/listarEmpleado" class="nav-link">Empleados</a></li>
 <li class="nav-item"><a href="/listarUser" class="nav-link">Usuarios</a></li>
 <li class="nav-item"><a href="/listarIncapacidad" class="nav-link">Ausentismos</a></li>
-<li class="nav-item"><a href="#" class="nav-link">Reportes</a></li>
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Reportes</a>
+<ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="/reporteArea">Por Area de trabajo</a></li>
+      <li><a class="dropdown-item" href="#">Por tipo de Incapacidad</a></li>
+      <li><a class="dropdown-item" href="#">Por estado de cuentas</a></li>      
+      <li><a class="dropdown-item" href="#">Por Empleado</a></li>
+    </ul>
+
+</li>
 </ul>
 </div>
 </div>
