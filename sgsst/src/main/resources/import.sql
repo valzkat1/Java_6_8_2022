@@ -12430,16 +12430,19 @@ INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES	('Admin', 'A
 INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES	('Admin', 'Reportes', true, true, true);
 
 INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Home', true, true, true);
-INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Empleados', true, true, true);
-INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Usuarios', true, false, false);
-INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Ausentismos', true, true, true);
-INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Reportes', true, true, true);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Empleados', true, true, false);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Usuarios', false, false, false);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Ausentismos', true, true, false);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Auxiliar', 'Reportes', true, true, false);
 
 INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas', 'Home', true, false, false);
 INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas', 'Empleados', true, false, false);
-INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas', 'Usuarios', true, false, false);
+INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas', 'Usuarios', false, false, false);
 INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas', 'Ausentismos', true, false, false);
 INSERT INTO tbl_permisos(roles, workspace,read,write,delete) VALUES		('Consultas', 'Reportes', true, false, false);
 
-INSERT INTO "tbl_empleado" ("id", "afp", "apellidos", "area_empleado", "arl", "cargo", "direccion", "email", "eps", "fecha_nacimiento", "genero", "id_user", "nombre", "salario", "telefono", "tipoid") VALUES (1, 'cuaslquiera', 'ramirez', 0, 'cuaslquiera', 'Admin', NULL, NULL, 'SURA', '2022-7-1 00:00:00', NULL, 22222222, 'Pepito', 1000000, NULL, 'CC');
+INSERT INTO "tbl_empleado" ("id", "afp", "apellidos", "area_empleado", "arl", "cargo", "direccion", "email", "eps", "fecha_nacimiento", "genero", "id_user", "nombre", "salario", "telefono", "tipoid") VALUES (1, 'cuaslquiera', 'Apellidos', 0, 'cuaslquiera', 'Admin', NULL, NULL, 'SURA', '2022-7-1 00:00:00', NULL, 22222222, 'Administrador SGSST', 1000000, NULL, 'CC');
+INSERT INTO "tbl_empleado" ("id", "afp", "apellidos", "area_empleado", "arl", "cargo", "direccion", "email", "eps", "fecha_nacimiento", "genero", "id_user", "nombre", "salario", "telefono", "tipoid") VALUES (2, 'afp generica', 'Apellidos auxiliar', 1, 'ARL cuaslquiera', 'Auxiliar SGSST', NULL, NULL, 'EPS Auxiliar', '2022-7-1 00:00:00', NULL, 333333333, 'Administrador SGSST', 1000000, NULL, 'CC');
+
 INSERT INTO usuario(id,username,password,roles,id_empleado) VALUES (1,'admin','$2a$10$4KpRoCAm.WE4qAsPXua2PeoyQiDRGCiBxPjcrz5dbSNByV21wl7Zy','Admin',1);
+INSERT INTO usuario(id,username,password,roles,id_empleado) VALUES (2,'auxiliar','$2a$10$4KpRoCAm.WE4qAsPXua2PeoyQiDRGCiBxPjcrz5dbSNByV21wl7Zy','Auxiliar',2);

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="cabecera.jsp"/>
 
@@ -46,13 +47,17 @@
 
 <td>${emp.getTotalDias()}</td>
 
-<td style="font-size:70%">${emp.getSalarioDia()}</td>
+<td style="font-size:80%"><fmt:formatNumber type = "number" 
+         maxFractionDigits = "2" value = "${emp.getSalarioDia()}" /></td>
 <td>${emp.getEPS()}</td>
 <td style="font-size:60%">${emp.getDiagnostico().getDiagnostico()}</td>
 <td>${emp.getClasificacion()}</td>
-<td>${emp.getAsumidoEmpresa()}</td>
-<td>${emp.getTotalEPS()}</td>
-<td>${emp.getTotalARL()}</td>
+<td><fmt:formatNumber type = "number" 
+         maxFractionDigits = "2" value = "${emp.getAsumidoEmpresa()}" /></td>
+<td><fmt:formatNumber type = "number" 
+         maxFractionDigits = "2" value = "${emp.getTotalEPS()}" /></td>
+<td><fmt:formatNumber type = "number" 
+         maxFractionDigits = "2" value = "${emp.getTotalARL()}" /></td>
 <td><a href="/editar_incapacidad?id=${emp.getId()}"><button type="button" class="btn btn-primary">Editar</button></a></td>
 
 

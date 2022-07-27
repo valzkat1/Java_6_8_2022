@@ -13,17 +13,18 @@
 <table class="table">
 
 <thead>
-<th>Nombre</th>
-<th>Apellidos</th>
-<th>Cargo</th>
-<th>Fecha Nacimiento</th>
-<th>Salario</th>
-<th>Tipo ID</th>
-<th>No Identificacion</th>
-<th>Editar</th>
-<th>Eliminar</th>
-<th>Usuario</th>
-
+	<th>Nombre</th>
+	<th>Apellidos</th>
+	<th>Cargo</th>
+	<th>Fecha Nacimiento</th>
+	<th>Salario</th>
+	<th>Tipo ID</th>
+	<th>No Identificacion</th>
+	<th>Editar</th>
+	 <c:if test="${permiso.getDelete()}">
+	    <th>Eliminar</th>
+        <th>Usuario</th>
+	</c:if>
 
 
 </thead>
@@ -39,9 +40,11 @@
 <td>${emp.getTipoID()}</td>
 <td>${emp.getId_user()}</td>
 <td><a href="/editar_empleado?id=${emp.getId()}"><button type="button" class="btn btn-primary">Editar</button></a></td>
+
+<c:if test="${permiso.getDelete()}">
 <td><a href="/eliminar_empleado?id=${emp.getId()}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
 <td><a href="/editar_user?id=${emp.getId()}"><button type="button" class="btn btn-success">Usuario</button></a></td>
-
+</c:if>
 
 </tr>
 

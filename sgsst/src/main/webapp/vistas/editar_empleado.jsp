@@ -9,7 +9,7 @@
 
 <div class="container">
  
- <h3>Crear Empleados</h3>
+ <h3>Editar Empleados</h3>
  
 
  
@@ -114,7 +114,7 @@
             <form:errors path="arl" class="errores"></form:errors>
             
     <br/> 
- 
+ <form:hidden path="id"/>
  
  <form:button type="submit" class="btn btn-primary">Enviar</form:button>
  

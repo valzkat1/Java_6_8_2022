@@ -12,14 +12,17 @@ import org.fundacionview.sgsst.modelos.Ausentismo;
 import org.fundacionview.sgsst.modelos.CamposGeneral;
 import org.fundacionview.sgsst.modelos.CamposLogin;
 import org.fundacionview.sgsst.modelos.Empleado;
+import org.fundacionview.sgsst.modelos.Permisos;
 import org.fundacionview.sgsst.modelos.Usuario;
 import org.fundacionview.sgsst.modelos.tipoID;
 import org.fundacionview.sgsst.repositorios.RepoAusentismos;
 import org.fundacionview.sgsst.repositorios.RepoCie10;
 import org.fundacionview.sgsst.repositorios.RepoUser;
 import org.fundacionview.sgsst.seguridad.PermissionCheck;
+import org.fundacionview.sgsst.seguridad.SecurityUtil;
 import org.fundacionview.sgsst.seguridad.Workspace;
 import org.fundacionview.sgsst.repositorios.RepoEmpleados;
+import org.fundacionview.sgsst.repositorios.RepoPermisos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -46,8 +49,14 @@ public class ControladorPpal {
 	@Autowired
 	RepoAusentismos repoA;
 	
+	
+	@Autowired
+	RepoPermisos repoPermi;
+	
+	
 	@Autowired
 	RepoCie10 cie10;
+	
 	
 	@GetMapping({"/","/login"})	
 	public String index(Model mod) {
@@ -140,6 +149,9 @@ public class ControladorPpal {
 	@PermissionCheck(workspace = {Workspace.EMPLEADOS},read = true)
 	public String listarEmpl(Model mod) {
 		
+		Permisos permisoEmplea=repoPermi.consultaRolPermisos( SecurityUtil.getUser().getRoles().toString(), "Empleados");
+		
+		mod.addAttribute("permiso",permisoEmplea);
 		mod.addAttribute("listaEmpleados",repoEmpleado.findAll());
 		
 		return "listarEmpleados";
@@ -322,7 +334,7 @@ public class ControladorPpal {
 			a.setAsumidoEmpresa(calculos[0]);
 			repoA.save(a);
 			
-		return "redirect:/home";
+		return "redirect:/listarIncapacidad";
 		}
 	}
 	
@@ -419,6 +431,16 @@ public class ControladorPpal {
 	public String sinPermisos() {
 		return "sinPermisos";
 	}
+	
+	
+	@GetMapping("/editar_incapacidad")
+	public String editar_incapacidad(Model mod,@RequestParam("id")int id) {
+		
+		mod.addAttribute("ausentismo",repoA.getById(id));
+		
+		return "editar_incapacidad";
+	}
+	
 	
 	
 }
