@@ -19,7 +19,7 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Size(min = 5)
+	@Size(min = 5,message = "Minimo 5 caracteres")
 	@Column(unique = true)
 	private String username;
 	

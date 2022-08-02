@@ -37,13 +37,14 @@ public class Empleado {
 	private int id;
 	
 	
-	@Min(value = 1000000,message = "Solo numeros de cedula validos",groups = {CamposGeneral.class})
+	@Min(value = 1000000,message = "Solo numeros de cedula validos")
 	private long id_user;
 	
-	@NotEmpty(message = "Campo necesario",groups = {CamposGeneral.class})
+	@NotEmpty(message = "Campo necesario")
+	@Size(min = 2,message = "Minimo 2 letras para el nombre")
 	private String nombre;
 	
-	@NotEmpty(message = "Campo necesario",groups = {CamposGeneral.class})
+	@NotEmpty(message = "Campo necesario")
 	private String apellidos;
 	
 	//@NotEmpty(message = "Campo necesario" ,groups = {CamposGeneral.class,CamposLogin.class})
@@ -53,7 +54,7 @@ public class Empleado {
 	private String tipoID;
 	
 
-	@Min(value = 1000000,message = "SMV no es inferior a 1 millon",groups = {CamposGeneral.class})
+	@Min(value = 1000000,message = "SMV no es inferior a 1 millon")
 	private int salario;
 	
 	private String cargo;
@@ -64,6 +65,7 @@ public class Empleado {
 	
 	private String arl;
 	
+	//@Enumerated(EnumType.STRING)
 	private AreasEmpresa areaEmpleado;
 	
 	

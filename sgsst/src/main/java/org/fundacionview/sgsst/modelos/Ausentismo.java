@@ -66,7 +66,17 @@ public class Ausentismo {
 	
 	private AreasEmpresa areaTrabajo;
 	
+	private Date fechaReg;
 	
+	
+	public Date getFechaReg() {
+		return fechaReg;
+	}
+
+	public void setFechaReg(Date fechaReg) {
+		this.fechaReg = fechaReg;
+	}
+
 	public AreasEmpresa getAreaTrabajo() {
 		return areaTrabajo;
 	}

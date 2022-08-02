@@ -12,6 +12,7 @@ import org.fundacionview.sgsst.modelos.Ausentismo;
 import org.fundacionview.sgsst.modelos.CamposGeneral;
 import org.fundacionview.sgsst.modelos.CamposLogin;
 import org.fundacionview.sgsst.modelos.Empleado;
+import org.fundacionview.sgsst.modelos.Empleado.AreasEmpresa;
 import org.fundacionview.sgsst.modelos.Permisos;
 import org.fundacionview.sgsst.modelos.Usuario;
 import org.fundacionview.sgsst.modelos.tipoID;
@@ -88,7 +89,7 @@ public class ControladorPpal {
 	
 	@PostMapping("/form_empleado")
 	@PermissionCheck(workspace = {Workspace.EMPLEADOS},write = true)
-	public String procesaFormulario(Model mod, @Validated(CamposGeneral.class) @ModelAttribute("empleado")Empleado e,BindingResult rv) {
+	public String procesaFormulario(Model mod, @Valid @ModelAttribute("empleado")Empleado e,BindingResult rv) {
 		
 		if(rv.hasErrors()) {
 			ArrayList<tipoID> listaTipos=new ArrayList<tipoID>();
@@ -230,7 +231,7 @@ public class ControladorPpal {
 	
 	@PostMapping("/form_usuario")
 	@PermissionCheck(workspace = {Workspace.USUARIOS},write =  true)
-	public String crearUs(@Valid @ModelAttribute("usuario")Usuario u,Model mod,BindingResult rv) {
+	public String crearUs(@Valid @ModelAttribute("usuario")Usuario u,BindingResult rv,Model mod) {
 		
 		if(rv.hasErrors()) {
 			return "form_empleado_user";
@@ -248,7 +249,7 @@ public class ControladorPpal {
 	
 	@PostMapping("/editar_user")
 	@PermissionCheck(workspace = {Workspace.USUARIOS},write =  true)
-	public String editar_user(@Valid @ModelAttribute("usuario")Usuario u,Model mod,BindingResult rv) {
+	public String editar_user(@Valid @ModelAttribute("usuario")Usuario u,BindingResult rv,Model mod) {
 		
 		if(rv.hasErrors()) {
 			return "editar_user";
@@ -332,6 +333,7 @@ public class ControladorPpal {
 			a.setTotalARL(calculos[3]);
 			a.setTotalPensiones(calculos[2]);
 			a.setAsumidoEmpresa(calculos[0]);
+			a.setFechaReg(new Date());
 			repoA.save(a);
 			
 		return "redirect:/listarIncapacidad";
@@ -451,13 +453,48 @@ public class ControladorPpal {
 	
 	@PostMapping("/reporteAreas")
 	@PermissionCheck(workspace = {Workspace.REPORTES},read = true)
-	public String generarReporteArea(Model mod,@RequestParam("area")String area) {
+	public String generarReporteArea(Model mod,@RequestParam("area")AreasEmpresa area) {
+	//public String generarReporteArea(Model mod,@RequestParam("area")Integer area) {		
 		
-		mod.addAttribute("listaIncapacidades",repoA.findAll());
+		mod.addAttribute("listaIncapacidades",repoA.findByAreaTrabajo(area));
+		//mod.addAttribute("listaIncapacidades",repoA.buscarPorArea(area));
 		mod.addAttribute("area",area);
 		return "tableReporteArea";
 	}
 	
+	@GetMapping("/reporteTipo")
+	@PermissionCheck(workspace = {Workspace.REPORTES},read = true)
+	public String reporteTipo() {
+		return "reporteTipo";
+	}
+	
+	@PostMapping("/reporteTipo")
+	@PermissionCheck(workspace = {Workspace.REPORTES},read = true)
+	public String generarReporteTipo(Model mod,@RequestParam("tipoIncapacidad")String tipo) {
+		
+		
+		mod.addAttribute("listaIncapacidades",repoA.findByTipoIncapacidad(tipo));
+		mod.addAttribute("area",tipo);
+		return "tableReporteTipo";
+	}
+	
+	
+	@GetMapping("/reporteCuentas")
+	@PermissionCheck(workspace = {Workspace.REPORTES},read = true)
+	public String reporteCuentas() {
+		return "reporteCuentas";
+	}
+	
+	
+	@PostMapping("/reporteCuentas")
+	@PermissionCheck(workspace = {Workspace.REPORTES},read = true)
+	public String generarReporteCuentas(Model mod,@RequestParam("fechaIn")Date fechaIn,@RequestParam("fechaFin")Date fechaFin) {
+		
+		
+		mod.addAttribute("listaIncapacidades",repoA.consultaCuentas(fechaIn,fechaFin));
+		mod.addAttribute("fechas","Entre "+fechaIn.toString()+" y "+fechaFin.toString());
+		return "tableReporteCuentas";
+	}
 	
 	
 	

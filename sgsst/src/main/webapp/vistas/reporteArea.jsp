@@ -17,7 +17,12 @@
      <option value="ADMINISTRACION">ADMINISTRACION</option>
      <option value="SISTEMAS">SISTEMAS</option>
      <option value="OFICIOS">OFICIOS</option>
-     <option value="BRIGADA">BRIGADA DE EMERGENCIA</option>
+     <option value="BRIGADA">BRIGADA DE EMERGENCIA</option> 
+     
+    <!--   <option value="0">ADMINISTRACION</option>
+     <option value="1">SISTEMAS</option>
+     <option value="2">OFICIOS</option>
+     <option value="3">BRIGADA DE EMERGENCIA</option> -->
   </select>
 </div>
 </div>

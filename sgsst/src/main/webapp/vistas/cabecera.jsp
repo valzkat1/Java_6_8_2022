@@ -34,8 +34,8 @@ font-size:70%;
 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Reportes</a>
 <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="/reporteArea">Por Area de trabajo</a></li>
-      <li><a class="dropdown-item" href="#">Por tipo de Incapacidad</a></li>
-      <li><a class="dropdown-item" href="#">Por estado de cuentas</a></li>      
+      <li><a class="dropdown-item" href="/reporteTipo">Por tipo de Incapacidad</a></li>
+      <li><a class="dropdown-item" href="/reporteCuentas">Por estado de cuentas</a></li>      
       <li><a class="dropdown-item" href="#">Por Empleado</a></li>
     </ul>
 
