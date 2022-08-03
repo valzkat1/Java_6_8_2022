@@ -10,7 +10,7 @@
 
 <a href="/form_empleado">Crear Empleado</a>
 
-<table class="table">
+<table class="table" id="Empleados">
 
 <thead>
 	<th>Nombre</th>
@@ -64,3 +64,9 @@
 
 
 <jsp:include page="pie.jsp"/>
+<script>
+
+$(document).ready(function () {
+    $('#Empleados').DataTable();
+});
+</script>

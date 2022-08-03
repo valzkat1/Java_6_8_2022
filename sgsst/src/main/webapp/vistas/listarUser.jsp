@@ -15,10 +15,10 @@
 <thead>
 <th>Nombre Usuario</th>
 <th>Clave</th>
-
+<c:if test="${permiso.getDelete()}">
 <th>Eliminar</th>
 <th>Editar</th>
-
+</c:if>
 
 
 </thead>
@@ -28,10 +28,10 @@
 <tr>
 <td>${emp.getUsername()}</td>
 <td>${emp.getPassword()}</td>
-
+<c:if test="${permiso.getDelete()}">
 <td><button type="button" onclick="confirmarEliminaUser(${emp.getId()})" class="btn btn-danger">Eliminar</button></td>
 <td><a href="/editar_user?id=${emp.getId()}"><button type="button" class="btn btn-success">Editar</button></a></td>
-
+</c:if>
 
 </tr>
 

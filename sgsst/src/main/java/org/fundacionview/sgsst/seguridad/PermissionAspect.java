@@ -1,6 +1,6 @@
 package org.fundacionview.sgsst.seguridad;
 
-import java.nio.file.AccessDeniedException;
+
 import java.util.List;
 import java.util.function.Function;
 
@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.fundacionview.sgsst.modelos.Permisos;
 import org.fundacionview.sgsst.repositorios.RepoPermisos;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
 
 @Aspect
@@ -53,8 +54,8 @@ public class PermissionAspect {
            });
 
             if(!hasPermission[0]){
-            	return null;
-                //throw new AccessDeniedException("Do not has permission");
+            	//return null;
+                throw new AccessDeniedException("Do not has permission");
             }
 
         }

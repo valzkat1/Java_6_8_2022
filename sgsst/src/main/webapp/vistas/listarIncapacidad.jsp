@@ -28,11 +28,11 @@
 <th>$ Empresa</th>
 <th>$ EPS</th>
 <th>$ ARL</th>
-
+<c:if test="${permiso.getDelete()}">
 <th>Editar</th>
+<th>Eliminar</th>
 
-
-
+</c:if>
 
 
 </thead>
@@ -58,9 +58,12 @@
          maxFractionDigits = "2" value = "${emp.getTotalEPS()}" /></td>
 <td><fmt:formatNumber type = "number" 
          maxFractionDigits = "2" value = "${emp.getTotalARL()}" /></td>
+         
+ <c:if test="${permiso.getDelete()}">        
 <td><a href="/editar_incapacidad?id=${emp.getId()}"><button type="button" class="btn btn-primary">Editar</button></a></td>
+<td><a href="/eliminar_incapacidad?id=${emp.getId()}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
 
-
+</c:if>
 </tr>
 
 

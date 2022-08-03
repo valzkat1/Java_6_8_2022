@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.naming.Binding;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -26,6 +27,7 @@ import org.fundacionview.sgsst.repositorios.RepoEmpleados;
 import org.fundacionview.sgsst.repositorios.RepoPermisos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -267,6 +269,10 @@ public class ControladorPpal {
 	@PermissionCheck(workspace = {Workspace.USUARIOS},read = true)
 	public String listarUser(Model mod) {
 		
+		
+        Permisos permisoEmplea=repoPermi.consultaRolPermisos( SecurityUtil.getUser().getRoles().toString(), "Usuarios");
+		
+		mod.addAttribute("permiso",permisoEmplea);
 		mod.addAttribute("listaEmpleados",usuarioLogin.findAll());
 		
 		return "listarUser";
@@ -421,8 +427,12 @@ public class ControladorPpal {
 	
 	@GetMapping("/listarIncapacidad")
 	@PermissionCheck(workspace = {Workspace.AUSENTISMOS},read = true)
-
 	public String listarIncapacidad(Model mod) {
+		
+		
+        Permisos permisoEmplea=repoPermi.consultaRolPermisos( SecurityUtil.getUser().getRoles().toString(), "Ausentismos");
+		
+		mod.addAttribute("permiso",permisoEmplea);
 		
 		mod.addAttribute("listaIncapacidades",repoA.findAll());
 		
@@ -512,5 +522,17 @@ public class ControladorPpal {
 		return "tableReporteEmpleados";
 	}
 	
+	@GetMapping("/cerrarSess")
+	public String cerrarSess(HttpServletRequest request) {
+		
+		 SecurityContextHolder.clearContext();
+		 HttpSession session = request.getSession(false);
+	        if (session != null) {
+	            session.invalidate();
+	        }
+		 
+		return "redirect:/login";
+		
+	}
 	
 }

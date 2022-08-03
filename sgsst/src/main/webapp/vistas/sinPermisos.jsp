@@ -3,9 +3,10 @@
 <jsp:include page="cabecera.jsp"/>
 
 <div class="container">
- 
-Acceso denegado...
-
+<br/>
+ <center>
+      <h3>Acceso denegado...</h3>
+</center>
 
 </div>
 
