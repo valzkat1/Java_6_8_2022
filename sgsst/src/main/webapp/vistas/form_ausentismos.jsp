@@ -47,10 +47,10 @@
              <form:option value="Enfermedad Comun">Enfermedad Comun</form:option>
              <form:option value="Licencia Maternidad">Licencia Maternidad</form:option>
              <form:option value="Licencia Paternidad">Licencia Paternidad</form:option>
-              <form:option value="Accidente de trabajo">Accidente de trabajo</form:option>
-              <form:option value="Enfermedad laboral">Enfermedad Laboral</form:option>
+              <form:option value="Accidente de Trabajo">Accidente de trabajo</form:option>
+              <form:option value="Enfermedad Laboral">Enfermedad Laboral</form:option>
               <form:option value="Fondo Pensiones">Fondo Pensiones</form:option>
-              <form:option value="Accidente de transito">Accidente de transito</form:option>
+              <form:option value="Accidente de Transito">Accidente de transito</form:option>
            </form:select>
            <form:errors path="tipoIncapacidad"></form:errors>
           </div> 

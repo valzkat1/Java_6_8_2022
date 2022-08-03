@@ -385,18 +385,18 @@ public class ControladorPpal {
 			totalPagar[3]=0.0;
 			
 			
-		}else if(tipoIncapa.equals("Accidente de Trabajo") || tipoIncapa.equals("Enfermedad Laboral")) {
+		}else if(tipoIncapa.equalsIgnoreCase("Accidente de Trabajo") || tipoIncapa.equalsIgnoreCase("Enfermedad Laboral")) {
 			totalPagar[0]=0.0;
 			totalPagar[1]=0.0;
 			totalPagar[2]=0.0;
 			totalPagar[3]=totalDias*salarioDia;
 			
 			
-		}else if(tipoIncapa.equals("Fondo de Pensiones")) {
+		}else if(tipoIncapa.equals("Fondo Pensiones")) {
 			
 			
 			
-		}else if(tipoIncapa.equals("Accidente de transito")) {
+		}else if(tipoIncapa.equals("Accidente de Transito")) {
 			
 			if(totalDias<3) {
 				totalPagar[0]=totalDias*salarioDia;
@@ -496,6 +496,21 @@ public class ControladorPpal {
 		return "tableReporteCuentas";
 	}
 	
+	@GetMapping("/reporteEmpleado")
+	@PermissionCheck(workspace = {Workspace.REPORTES},read = true)
+	public String reporteEmpleado() {
+		return "reporteEmpleado";
+	}
+	
+	@PostMapping("/reporteEmpleado")
+	@PermissionCheck(workspace = {Workspace.REPORTES},read = true)
+	public String generarReporteEmpleados(Model mod,@RequestParam("numDoc")Long numDoc,@RequestParam("nombre")String nombre) {
+		
+		
+		mod.addAttribute("listaIncapacidades",repoA.findByNumDoc(numDoc));
+		mod.addAttribute("titulo",nombre);
+		return "tableReporteEmpleados";
+	}
 	
 	
 }

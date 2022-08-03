@@ -18,10 +18,10 @@
              <option value="Enfermedad Comun">Enfermedad Comun</option>
              <option value="Licencia Maternidad">Licencia Maternidad</option>
              <option value="Licencia Paternidad">Licencia Paternidad</option>
-              <option value="Accidente de trabajo">Accidente de trabajo</option>
-              <option value="Enfermedad laboral">Enfermedad Laboral</option>
+              <option value="Accidente de Trabajo">Accidente de trabajo</option>
+              <option value="Enfermedad Laboral">Enfermedad Laboral</option>
               <option value="Fondo Pensiones">Fondo Pensiones</option>
-              <option value="Accidente de transito">Accidente de transito</option>
+              <option value="Accidente de Transito">Accidente de transito</option>
            </select>
 </div>
 </div>

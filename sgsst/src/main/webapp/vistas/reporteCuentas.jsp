@@ -9,7 +9,7 @@
 
 <br/>
 <hr/>
-<form action="/reporteCuentas2" method="POST">
+<form action="/reporteCuentas" method="POST">
 <div class="container">
 <div class="input-group mb-3">
   <span class="input-group-text" id="basic-addon1" >Fecha Inicial</span>

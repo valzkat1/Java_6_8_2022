@@ -36,7 +36,7 @@ font-size:70%;
       <li><a class="dropdown-item" href="/reporteArea">Por Area de trabajo</a></li>
       <li><a class="dropdown-item" href="/reporteTipo">Por tipo de Incapacidad</a></li>
       <li><a class="dropdown-item" href="/reporteCuentas">Por estado de cuentas</a></li>      
-      <li><a class="dropdown-item" href="#">Por Empleado</a></li>
+      <li><a class="dropdown-item" href="/reporteEmpleado">Por Empleado</a></li>
     </ul>
 
 </li>

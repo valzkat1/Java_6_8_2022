@@ -14,12 +14,12 @@
 <table class="table">
 
   <thead class="table-dark">
-<th>EPS</th>
+<th>Total EPS</th>
 
-<th>ARL</th>
-<th>Fondo Pensiones</th>
+<th>Total ARL</th>
+<th>Total Fondo Pensiones</th>
 
-<th>Empresa</th>
+<th>Total Empresa</th>
 
 
 
@@ -39,15 +39,15 @@
 
 
 <td style="font-size:80%"><fmt:formatNumber type = "number" 
-         maxFractionDigits = "2" value = "${emp.getEPS()}" /></td>
+         maxFractionDigits = "2" value = "${emp.get('totalEps')}" /></td>
 
 <td ><fmt:formatNumber type = "number" 
-         maxFractionDigits = "2" value = "${emp.getEPS()}" /></td>
+         maxFractionDigits = "2" value = "${emp.get('totalArl')}" /></td>
 
 <td><fmt:formatNumber type = "number" 
-         maxFractionDigits = "2" value = "${emp.getEPS()}" /></td>
+         maxFractionDigits = "2" value = "${emp.get('totalPensiones')}" /></td>
 <td><fmt:formatNumber type = "number" 
-         maxFractionDigits = "2" value = "${emp.getEPS()}" /></td>
+         maxFractionDigits = "2" value = "${emp.get('totaEmpresa')}" /></td>
 
 
 

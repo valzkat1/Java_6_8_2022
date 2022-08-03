@@ -25,7 +25,11 @@ public interface RepoAusentismos extends JpaRepository<Ausentismo, Integer>{
 	
 	public List<Ausentismo> findByTipoIncapacidad(String tipoIncapacidad);
 	
-	@Query(value = "SELECT sum(asumido_empresa) as totaEmpresa,sum(totaleps) as totalEps,sum(total_pensiones) as totalPensiones FROM tbl_ausentismos WHERE fecha_reg BETWEEN :fechaIn AND :fechaFin", nativeQuery = true)
-	public ReporteCuentas consultaCuentas(@Param("fechaIn")Date fechaIn,@Param("fechaFin")Date fechaFin);
+	@Query(value = "SELECT sum(asumido_empresa) as totaEmpresa,sum(totaleps) as totalEps,sum(total_pensiones) as totalPensiones,sum(totalarl) as totalArl FROM tbl_ausentismos WHERE fecha_reg BETWEEN :fechaIn AND :fechaFin", nativeQuery = true)
+	public List<Map<String,Double>> consultaCuentas(@Param("fechaIn")Date fechaIn,@Param("fechaFin")Date fechaFin);
+	
+	
+	public List<Ausentismo> findByNumDoc(Long numDoc);
+	
 	
 }
